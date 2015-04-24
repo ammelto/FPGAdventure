@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+# Start of session at: Tue Apr 14 06:02:58 2015
+# Process ID: 2648
+# Log file: C:/Users/Dilancuan/Desktop/Adventure/Adventure/planAhead_run_1/planAhead.log
+# Journal file: C:/Users/Dilancuan/Desktop/Adventure/Adventure/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source C:/Users/Dilancuan/Desktop/Adventure/Adventure/pa.fromNetlist.tcl

@@ -1,0 +1,5 @@
+verilog work "clock_shift.v"
+verilog work "clock_divider.v"
+verilog work "vga_driver.v"
+verilog work "map.v"
+verilog work "main.v"

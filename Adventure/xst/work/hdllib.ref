@@ -1,0 +1,5 @@
+MO map_generator NULL map.v vlg54/map__generator.bin 1429646118
+MO clock_divider NULL clock_divider.v vlg1E/clock__divider.bin 1429646118
+MO main NULL main.v vlg2D/main.bin 1429646118
+MO clock_shift NULL clock_shift.v vlg09/clock__shift.bin 1429646118
+MO vga_driver NULL vga_driver.v vlg35/vga__driver.bin 1429646118
