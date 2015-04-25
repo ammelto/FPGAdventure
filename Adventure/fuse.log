@@ -1,27 +1,35 @@
-Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o E:/Adventure/Adventure/MainTest_isim_beh.exe -prj E:/Adventure/Adventure/MainTest_beh.prj work.MainTest work.glbl 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/MainTest_isim_beh.exe -prj C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/MainTest_beh.prj work.MainTest work.glbl 
 ISim P.20131013 (signature 0x7708f090)
-Number of CPUs detected in this system: 2
-Turning on mult-threading, number of parallel sub-compilation jobs: 4 
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Analyzing Verilog file "E:/Adventure/Adventure/clock_shift.v" into library work
-Analyzing Verilog file "E:/Adventure/Adventure/clock_divider.v" into library work
-Analyzing Verilog file "E:/Adventure/Adventure/vga_driver.v" into library work
-Analyzing Verilog file "E:/Adventure/Adventure/map.v" into library work
-Analyzing Verilog file "E:/Adventure/Adventure/main.v" into library work
-Analyzing Verilog file "E:/Adventure/Adventure/MainTest.v" into library work
+Analyzing Verilog file "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/StartCastle.v" into library work
+Analyzing Verilog file "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/HallwayTop.v" into library work
+Analyzing Verilog file "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/clock_shift.v" into library work
+Analyzing Verilog file "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/clock_divider.v" into library work
+Analyzing Verilog file "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/vga_driver.v" into library work
+Analyzing Verilog file "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/map.v" into library work
+Analyzing Verilog file "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/main.v" into library work
+Analyzing Verilog file "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/MainTest.v" into library work
 Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
+WARNING:HDLCompiler:329 - "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/MainTest.v" Line 44: Target <xin> of concurrent assignment or output port connection should be a net type.
+WARNING:HDLCompiler:329 - "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/MainTest.v" Line 45: Target <yin> of concurrent assignment or output port connection should be a net type.
+WARNING:HDLCompiler:1016 - "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/map.v" Line 44: Port active is not connected to this instance
+WARNING:HDLCompiler:1016 - "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/map.v" Line 51: Port active is not connected to this instance
 Completed static elaboration
 Compiling module clock_divider
 Compiling module clock_shift
 Compiling module vga_driver
+Compiling module StartCastle
+Compiling module HallwayTop
 Compiling module map_generator
 Compiling module main
 Compiling module MainTest
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 4 sub-compilation(s) to finish...
-Compiled 7 Verilog Units
-Built simulation executable E:/Adventure/Adventure/MainTest_isim_beh.exe
-Fuse Memory Usage: 27300 KB
-Fuse CPU Usage: 624 ms
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 9 Verilog Units
+Built simulation executable C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/MainTest_isim_beh.exe
+Fuse Memory Usage: 29068 KB
+Fuse CPU Usage: 467 ms

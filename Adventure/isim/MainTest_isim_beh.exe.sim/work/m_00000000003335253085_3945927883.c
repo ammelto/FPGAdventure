@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "E:/Adventure/Adventure/clock_shift.v";
+static const char *ng0 = "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/clock_shift.v";
 
 
 

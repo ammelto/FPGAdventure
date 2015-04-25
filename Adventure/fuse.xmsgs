@@ -5,5 +5,17 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/MainTest.v" Line 44: Target &lt;<arg fmt="%s" index="1">xin</arg>&gt; of concurrent assignment or output port connection should be a net type.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/MainTest.v" Line 45: Target &lt;<arg fmt="%s" index="1">yin</arg>&gt; of concurrent assignment or output port connection should be a net type.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/map.v" Line 44: Port <arg fmt="%s" index="1">active</arg> is not connected to this instance
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/map.v" Line 51: Port <arg fmt="%s" index="1">active</arg> is not connected to this instance
+</msg>
+
 </messages>
 

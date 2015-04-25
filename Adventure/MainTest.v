@@ -28,6 +28,8 @@ module MainTest;
 	reg clk_50MHz;
 	reg [3:0] SWITCH;
 	reg [3:0] BUTTON;
+	reg xin;
+	reg yin;
 
 	// Outputs
 	wire vs_vga;
@@ -39,8 +41,8 @@ module MainTest;
 	// Instantiate the Unit Under Test (UUT)
 	main uut (
 		.clk_50MHz(clk_50MHz), 
-		.vs_vga(vs_vga), 
-		.hs_vga(hs_vga), 
+		.vs_vga(xin), 
+		.hs_vga(yin), 
 		.RED(RED), 
 		.GREEN(GREEN), 
 		.BLUE(BLUE), 
@@ -52,17 +54,17 @@ module MainTest;
 		clk_50MHz = 0;
 		forever
 			#5 clk_50MHz = ~clk_50MHz;
+				xin = ~xin;
+				yin = ~yin;
 	end
 
 	initial begin
 		// Initialize Inputs
-		BUTTON[0] = 1;
+		
 
 		// Wait 100 ns for global reset to finish
 		#100;
-        
-		// Add stimulus here
-
+		//640x480
 	end
       
 endmodule

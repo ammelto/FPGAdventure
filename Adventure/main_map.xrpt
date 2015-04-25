@@ -5,18 +5,18 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Tue Apr 21 14:55:40 2015">
+  <application stringID="Map" timeStamp="Sat Apr 25 04:15:59 2015">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
         <column stringID="value"/>
         <row stringID="row" value="0">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE\\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\\bin\nt64;C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64;C:\Xilinx\14.7\ISE_DS\ISE\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\14.7\ISE_DS\PlanAhead\bin;C:\Xilinx\14.7\ISE_DS\EDK\bin\nt64;C:\Xilinx\14.7\ISE_DS\EDK\lib\nt64;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;C:\Xilinx\14.7\ISE_DS\common\bin\nt64;C:\Xilinx\14.7\ISE_DS\common\lib\nt64;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\"/>
+          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE\\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\\bin\nt64;C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64;C:\Xilinx\14.7\ISE_DS\ISE\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\14.7\ISE_DS\PlanAhead\bin;C:\Xilinx\14.7\ISE_DS\EDK\bin\nt64;C:\Xilinx\14.7\ISE_DS\EDK\lib\nt64;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;C:\Xilinx\14.7\ISE_DS\common\bin\nt64;C:\Xilinx\14.7\ISE_DS\common\lib\nt64;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Perl\site\bin;C:\Perl\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\ImageMagick-6.8.9-Q16;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files (x86)\Skype\Phone\"/>
         </row>
         <row stringID="row" value="1">
           <item stringID="variable" value="PATHEXT"/>
-          <item stringID="value" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC"/>
+          <item stringID="value" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY"/>
         </row>
         <row stringID="row" value="2">
           <item stringID="variable" value="XILINX"/>
@@ -39,13 +39,13 @@
         <item stringID="User_EnvOsname" value="Microsoft Windows 7 , 64-bit"/>
         <item stringID="User_EnvOsrelease" value="Service Pack 1  (build 7601)"/>
       </item>
-      <item stringID="User_EnvHost" value="ECE-103-4"/>
+      <item stringID="User_EnvHost" value="Dilancuan-PC"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
         <row stringID="row" value="0">
-          <item stringID="arch" value="Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz"/>
-          <item stringID="speed" value="2925 MHz"/>
+          <item stringID="arch" value="Intel(R) Core(TM) i7-2670QM CPU @ 2.20GHz"/>
+          <item stringID="speed" value="2195 MHz"/>
         </row>
       </table>
     </section>
@@ -69,16 +69,16 @@
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
         <item dataType="int" stringID="MAP_NUM_WARNINGS" value="3"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="273648"/>
-        <item stringID="MAP_TOTAL_REAL_TIME" value="6 secs "/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="272236"/>
+        <item stringID="MAP_TOTAL_REAL_TIME" value="1 secs "/>
         <item stringID="MAP_TOTAL_CPU_TIME" value="1 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING">
-        <item AVAILABLE="1920" dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="100"/>
-        <item AVAILABLE="1920" dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="259">
+        <item AVAILABLE="1920" dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="105"/>
+        <item AVAILABLE="1920" dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="278">
           <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="52"/>
         </item>
-        <item AVAILABLE="960" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="150">
+        <item AVAILABLE="960" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="161">
           <item dataType="int" label="Number of Slices containing unrelated logic" stringID="MAP_NUM_SLICE_UNRELATED" value="0"/>
         </item>
       </section>
@@ -88,7 +88,7 @@
         </section>
       </section>
       <section stringID="MAP_HARD_IP_REPORTING">
-        <item AVAILABLE="24" dataType="int" label="Number of BUFGMUXs" stringID="MAP_NUM_BUFGMUX" value="2"/>
+        <item AVAILABLE="24" dataType="int" label="Number of BUFGMUXs" stringID="MAP_NUM_BUFGMUX" value="3"/>
       </section>
       <section stringID="MAP_MACRO_RPM_REPORTING">
         <item dataType="int" stringID="MAP_HARD_MACROS" value="0"/>

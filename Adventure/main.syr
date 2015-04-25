@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: main.prj
 
@@ -104,7 +104,11 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
+Compiling verilog file "StartCastle.v" in library work
+Compiling verilog file "HallwayTop.v" in library work
+Module <StartCastle> compiled
 Compiling verilog file "clock_shift.v" in library work
+Module <HallwayTop> compiled
 Compiling verilog file "clock_divider.v" in library work
 Module <clock_shift> compiled
 Compiling verilog file "vga_driver.v" in library work
@@ -141,6 +145,10 @@ Analyzing hierarchy for module <clock_divider> in library <work>.
 
 Analyzing hierarchy for module <clock_shift> in library <work>.
 
+Analyzing hierarchy for module <StartCastle> in library <work>.
+
+Analyzing hierarchy for module <HallwayTop> in library <work>.
+
 
 =========================================================================
 *                            HDL Analysis                               *
@@ -170,27 +178,18 @@ Module <clock_shift> is correct for synthesis.
 Analyzing module <map_generator> in library <work>.
 Module <map_generator> is correct for synthesis.
  
+Analyzing module <StartCastle> in library <work>.
+Module <StartCastle> is correct for synthesis.
+ 
+Analyzing module <HallwayTop> in library <work>.
+Module <HallwayTop> is correct for synthesis.
+ 
 
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Performing bidirectional port resolution...
-
-Synthesizing Unit <map_generator>.
-    Related source file is "map.v".
-WARNING:Xst:647 - Input <playerPosX> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <playerPosY> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 8-bit register for signal <mColor>.
-    Found 10-bit comparator lessequal for signal <mColor$cmp_le0000> created at line 60.
-    Found 9-bit comparator lessequal for signal <mColor$cmp_le0001> created at line 60.
-    Found 9-bit comparator lessequal for signal <mColor$cmp_le0002> created at line 63.
-    Found 10-bit comparator less for signal <mColor$cmp_lt0000> created at line 63.
-    Summary:
-	inferred   8 D-type flip-flop(s).
-	inferred   4 Comparator(s).
-Unit <map_generator> synthesized.
-
 
 Synthesizing Unit <clock_divider>.
     Related source file is "clock_divider.v".
@@ -203,6 +202,35 @@ Unit <clock_divider> synthesized.
 Synthesizing Unit <clock_shift>.
     Related source file is "clock_shift.v".
 Unit <clock_shift> synthesized.
+
+
+Synthesizing Unit <StartCastle>.
+    Related source file is "StartCastle.v".
+    Found 8-bit register for signal <mColor>.
+    Found 9-bit comparator greatequal for signal <mColor$cmp_ge0000> created at line 43.
+    Found 10-bit comparator greatequal for signal <mColor$cmp_ge0001> created at line 43.
+    Found 9-bit comparator less for signal <mColor$cmp_lt0000> created at line 34.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0001> created at line 37.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0002> created at line 40.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0003> created at line 43.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+	inferred   6 Comparator(s).
+Unit <StartCastle> synthesized.
+
+
+Synthesizing Unit <HallwayTop>.
+    Related source file is "HallwayTop.v".
+    Found 8-bit register for signal <mColor>.
+    Found 10-bit comparator greatequal for signal <mColor$cmp_ge0000> created at line 40.
+    Found 9-bit comparator less for signal <mColor$cmp_lt0000> created at line 34.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0001> created at line 37.
+    Found 9-bit comparator less for signal <mColor$cmp_lt0002> created at line 40.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0003> created at line 40.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+	inferred   5 Comparator(s).
+Unit <HallwayTop> synthesized.
 
 
 Synthesizing Unit <vga_driver>.
@@ -237,41 +265,54 @@ Synthesizing Unit <vga_driver>.
 Unit <vga_driver> synthesized.
 
 
+Synthesizing Unit <map_generator>.
+    Related source file is "map.v".
+WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 8-bit register for signal <mColor>.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+Unit <map_generator> synthesized.
+
+
 Synthesizing Unit <main>.
     Related source file is "main.v".
 WARNING:Xst:647 - Input <SWITCH<2:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 11-bit subtractor for signal <$sub0000> created at line 123.
-    Found 12-bit subtractor for signal <$sub0001> created at line 123.
-    Found 9-bit adder carry out for signal <add0000$addsub0000> created at line 123.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 123.
+    Found 11-bit subtractor for signal <$sub0000> created at line 172.
+    Found 12-bit subtractor for signal <$sub0001> created at line 172.
+    Found 9-bit adder carry out for signal <add0000$addsub0000> created at line 172.
+    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 172.
     Found 1-bit register for signal <collision>.
-    Found 10-bit comparator greatequal for signal <collision$cmp_ge0000> created at line 123.
-    Found 11-bit comparator greatequal for signal <collision$cmp_ge0001> created at line 123.
+    Found 8-bit comparator equal for signal <collision$cmp_eq0000> created at line 175.
+    Found 10-bit comparator greatequal for signal <collision$cmp_ge0000> created at line 172.
+    Found 11-bit comparator greatequal for signal <collision$cmp_ge0001> created at line 172.
     Found 8-bit register for signal <color>.
-    Found 10-bit comparator less for signal <color$cmp_lt0000> created at line 123.
-    Found 11-bit comparator less for signal <color$cmp_lt0001> created at line 123.
-    Found 11-bit comparator less for signal <color$cmp_lt0002> created at line 123.
-    Found 12-bit comparator less for signal <color$cmp_lt0003> created at line 123.
+    Found 10-bit comparator less for signal <color$cmp_lt0000> created at line 172.
+    Found 11-bit comparator less for signal <color$cmp_lt0001> created at line 172.
+    Found 11-bit comparator less for signal <color$cmp_lt0002> created at line 172.
+    Found 12-bit comparator less for signal <color$cmp_lt0003> created at line 172.
     Found 16-bit up counter for signal <counter>.
+    Found 3-bit updown counter for signal <mapX>.
+    Found 3-bit updown counter for signal <mapY>.
     Found 8-bit register for signal <playerColor>.
     Found 10-bit register for signal <playerPosX>.
-    Found 9-bit comparator greater for signal <playerPosX$cmp_gt0000> created at line 97.
-    Found 10-bit comparator lessequal for signal <playerPosX$cmp_le0000> created at line 105.
-    Found 9-bit comparator less for signal <playerPosX$cmp_lt0000> created at line 89.
-    Found 10-bit comparator less for signal <playerPosX$cmp_lt0001> created at line 81.
+    Found 10-bit comparator greatequal for signal <playerPosX$cmp_ge0000> created at line 98.
+    Found 9-bit comparator greatequal for signal <playerPosX$cmp_ge0001> created at line 137.
+    Found 9-bit comparator greater for signal <playerPosX$cmp_gt0000> created at line 114.
+    Found 10-bit comparator greater for signal <playerPosX$cmp_gt0001> created at line 145.
+    Found 10-bit comparator lessequal for signal <playerPosX$cmp_le0000> created at line 122.
+    Found 9-bit comparator lessequal for signal <playerPosX$cmp_le0001> created at line 141.
+    Found 9-bit comparator less for signal <playerPosX$cmp_lt0000> created at line 137.
+    Found 10-bit comparator less for signal <playerPosX$cmp_lt0001> created at line 133.
     Found 10-bit addsub for signal <playerPosX$share0000>.
     Found 9-bit register for signal <playerPosY>.
-    Found 9-bit comparator greatequal for signal <playerPosY$cmp_ge0000> created at line 89.
-    Found 10-bit comparator greater for signal <playerPosY$cmp_gt0000> created at line 105.
-    Found 9-bit comparator lessequal for signal <playerPosY$cmp_le0000> created at line 97.
     Found 9-bit addsub for signal <playerPosY$share0000>.
     Found 1-bit register for signal <turn>.
-    Found 16-bit comparator less for signal <turn$cmp_lt0000> created at line 70.
+    Found 16-bit comparator less for signal <turn$cmp_lt0000> created at line 81.
     Summary:
-	inferred   1 Counter(s).
+	inferred   3 Counter(s).
 	inferred  37 D-type flip-flop(s).
 	inferred   6 Adder/Subtractor(s).
-	inferred  14 Comparator(s).
+	inferred  16 Comparator(s).
 Unit <main> synthesized.
 
 INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
@@ -289,27 +330,29 @@ Macro Statistics
  9-bit adder carry out                                 : 1
  9-bit addsub                                          : 1
  9-bit subtractor                                      : 2
-# Counters                                             : 3
+# Counters                                             : 5
  10-bit up counter                                     : 2
  16-bit up counter                                     : 1
-# Registers                                            : 15
+ 3-bit updown counter                                  : 2
+# Registers                                            : 17
  1-bit register                                        : 8
  10-bit register                                       : 2
- 8-bit register                                        : 3
+ 8-bit register                                        : 5
  9-bit register                                        : 2
-# Comparators                                          : 27
- 10-bit comparator greatequal                          : 5
+# Comparators                                          : 36
+ 10-bit comparator greatequal                          : 8
  10-bit comparator greater                             : 1
- 10-bit comparator less                                : 8
- 10-bit comparator lessequal                           : 2
+ 10-bit comparator less                                : 12
+ 10-bit comparator lessequal                           : 1
  11-bit comparator greatequal                          : 1
  11-bit comparator less                                : 2
  12-bit comparator less                                : 1
  16-bit comparator less                                : 1
- 9-bit comparator greatequal                           : 1
+ 8-bit comparator equal                                : 1
+ 9-bit comparator greatequal                           : 2
  9-bit comparator greater                              : 1
- 9-bit comparator less                                 : 1
- 9-bit comparator lessequal                            : 3
+ 9-bit comparator less                                 : 4
+ 9-bit comparator lessequal                            : 1
 
 =========================================================================
 
@@ -317,10 +360,6 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-INFO:Xst:2261 - The FF/Latch <mColor_0> in Unit <map> is equivalent to the following FF/Latch, which will be removed : <mColor_1> 
-INFO:Xst:2261 - The FF/Latch <mColor_2> in Unit <map> is equivalent to the following 2 FFs/Latches, which will be removed : <mColor_3> <mColor_4> 
-INFO:Xst:2261 - The FF/Latch <mColor_5> in Unit <map> is equivalent to the following 2 FFs/Latches, which will be removed : <mColor_6> <mColor_7> 
-WARNING:Xst:1710 - FF/Latch <mColor_0> (without init value) has a constant value of 0 in block <map>. This FF/Latch will be trimmed during the optimization process.
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -335,44 +374,51 @@ Macro Statistics
  9-bit adder carry out                                 : 1
  9-bit addsub                                          : 1
  9-bit subtractor                                      : 2
-# Counters                                             : 3
+# Counters                                             : 5
  10-bit up counter                                     : 2
  16-bit up counter                                     : 1
-# Registers                                            : 70
- Flip-Flops                                            : 70
-# Comparators                                          : 27
- 10-bit comparator greatequal                          : 5
+ 3-bit updown counter                                  : 2
+# Registers                                            : 86
+ Flip-Flops                                            : 86
+# Comparators                                          : 36
+ 10-bit comparator greatequal                          : 8
  10-bit comparator greater                             : 1
- 10-bit comparator less                                : 8
- 10-bit comparator lessequal                           : 2
+ 10-bit comparator less                                : 12
+ 10-bit comparator lessequal                           : 1
  11-bit comparator greatequal                          : 1
  11-bit comparator less                                : 2
  12-bit comparator less                                : 1
  16-bit comparator less                                : 1
- 9-bit comparator greatequal                           : 1
+ 8-bit comparator equal                                : 1
+ 9-bit comparator greatequal                           : 2
  9-bit comparator greater                              : 1
- 9-bit comparator less                                 : 1
- 9-bit comparator lessequal                            : 3
+ 9-bit comparator less                                 : 4
+ 9-bit comparator lessequal                            : 1
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1710 - FF/Latch <mColor_0> (without init value) has a constant value of 0 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <mColor_1> (without init value) has a constant value of 0 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <mColor_2> in Unit <map_generator> is equivalent to the following 2 FFs/Latches, which will be removed : <mColor_3> <mColor_4> 
-INFO:Xst:2261 - The FF/Latch <mColor_5> in Unit <map_generator> is equivalent to the following 2 FFs/Latches, which will be removed : <mColor_6> <mColor_7> 
 
 Optimizing unit <main> ...
 
-Optimizing unit <map_generator> ...
-
 Optimizing unit <vga_driver> ...
+
+Optimizing unit <map_generator> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block main, actual ratio is 15.
+INFO:Xst:2261 - The FF/Latch <playerColor_2> in Unit <main> is equivalent to the following 5 FFs/Latches, which will be removed : <playerColor_3> <playerColor_4> <playerColor_5> <playerColor_6> <playerColor_7> 
+INFO:Xst:2261 - The FF/Latch <playerColor_0> in Unit <main> is equivalent to the following FF/Latch, which will be removed : <playerColor_1> 
+INFO:Xst:2261 - The FF/Latch <map/StartCastle/mColor_2> in Unit <main> is equivalent to the following 3 FFs/Latches, which will be removed : <map/StartCastle/mColor_4> <map/StartCastle/mColor_5> <map/StartCastle/mColor_7> 
+INFO:Xst:2261 - The FF/Latch <map/HallwayTopLeft/mColor_2> in Unit <main> is equivalent to the following 5 FFs/Latches, which will be removed : <map/HallwayTopLeft/mColor_3> <map/HallwayTopLeft/mColor_4> <map/HallwayTopLeft/mColor_5> <map/HallwayTopLeft/mColor_6> <map/HallwayTopLeft/mColor_7> 
+INFO:Xst:2261 - The FF/Latch <map/mColor_7> in Unit <main> is equivalent to the following 3 FFs/Latches, which will be removed : <map/mColor_5> <map/mColor_4> <map/mColor_2> 
+INFO:Xst:2261 - The FF/Latch <map/StartCastle/mColor_3> in Unit <main> is equivalent to the following FF/Latch, which will be removed : <map/StartCastle/mColor_6> 
+INFO:Xst:2261 - The FF/Latch <map/mColor_6> in Unit <main> is equivalent to the following FF/Latch, which will be removed : <map/mColor_3> 
+INFO:Xst:2261 - The FF/Latch <color_2> in Unit <main> is equivalent to the following 3 FFs/Latches, which will be removed : <color_4> <color_5> <color_7> 
+INFO:Xst:2261 - The FF/Latch <color_3> in Unit <main> is equivalent to the following FF/Latch, which will be removed : <color_6> 
+Found area constraint ratio of 100 (+ 5) on block main, actual ratio is 17.
 
 Final Macro Processing ...
 
@@ -380,8 +426,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 100
- Flip-Flops                                            : 100
+# Registers                                            : 105
+ Flip-Flops                                            : 105
 
 =========================================================================
 
@@ -410,31 +456,33 @@ Design Statistics
 # IOs                              : 19
 
 Cell Usage :
-# BELS                             : 505
+# BELS                             : 518
 #      GND                         : 1
-#      INV                         : 37
+#      INV                         : 31
 #      LUT1                        : 52
-#      LUT2                        : 69
+#      LUT2                        : 54
 #      LUT2_D                      : 1
 #      LUT2_L                      : 3
-#      LUT3                        : 34
-#      LUT3_D                      : 1
-#      LUT3_L                      : 2
-#      LUT4                        : 55
-#      LUT4_D                      : 3
-#      LUT4_L                      : 9
+#      LUT3                        : 36
+#      LUT3_D                      : 3
+#      LUT3_L                      : 3
+#      LUT4                        : 83
+#      LUT4_D                      : 6
+#      LUT4_L                      : 8
 #      MUXCY                       : 136
-#      MUXF5                       : 4
+#      MUXF5                       : 3
 #      VCC                         : 1
 #      XORCY                       : 97
-# FlipFlops/Latches                : 100
-#      FD                          : 1
-#      FDE                         : 20
-#      FDE_1                       : 9
-#      FDR                         : 60
-#      FDRE                        : 10
-# Clock Buffers                    : 2
-#      BUFG                        : 1
+# FlipFlops/Latches                : 105
+#      FD                          : 4
+#      FDE                         : 1
+#      FDE_1                       : 1
+#      FDR                         : 58
+#      FDRE                        : 29
+#      FDS                         : 4
+#      FDSE                        : 8
+# Clock Buffers                    : 3
+#      BUFG                        : 2
 #      BUFGP                       : 1
 # IO Buffers                       : 15
 #      IBUF                        : 5
@@ -446,12 +494,12 @@ Device utilization summary:
 
 Selected Device : 3s100ecp132-5 
 
- Number of Slices:                      139  out of    960    14%  
- Number of Slice Flip Flops:            100  out of   1920     5%  
- Number of 4 input LUTs:                266  out of   1920    13%  
+ Number of Slices:                      151  out of    960    15%  
+ Number of Slice Flip Flops:            105  out of   1920     5%  
+ Number of 4 input LUTs:                280  out of   1920    14%  
  Number of IOs:                          19
  Number of bonded IOBs:                  16  out of     83    19%  
- Number of GCLKs:                         2  out of     24     8%  
+ Number of GCLKs:                         3  out of     24    12%  
 
 ---------------------------
 Partition Resource Summary:
@@ -474,11 +522,10 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-vga/clk_div/clk_out1               | BUFG                   | 80    |
-turn                               | NONE(playerPosX_0)     | 19    |
+vga/clk_div/clk_out1               | BUFG                   | 77    |
+turn1                              | BUFG                   | 27    |
 clk_50MHz                          | BUFGP                  | 1     |
 -----------------------------------+------------------------+-------+
-INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
 ----------------------------------------
@@ -488,9 +535,9 @@ Timing Summary:
 ---------------
 Speed Grade: -5
 
-   Minimum period: 11.607ns (Maximum Frequency: 86.156MHz)
-   Minimum input arrival time before clock: 6.667ns
-   Maximum output required time after clock: 5.364ns
+   Minimum period: 11.051ns (Maximum Frequency: 90.490MHz)
+   Minimum input arrival time before clock: 5.422ns
+   Maximum output required time after clock: 5.445ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -499,10 +546,10 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'vga/clk_div/clk_out1'
-  Clock period: 11.607ns (frequency: 86.156MHz)
-  Total number of paths / destination ports: 2062 / 165
+  Clock period: 11.051ns (frequency: 90.490MHz)
+  Total number of paths / destination ports: 1795 / 152
 -------------------------------------------------------------------------
-Delay:               5.803ns (Levels of Logic = 13)
+Delay:               5.526ns (Levels of Logic = 13)
   Source:            vga/CurrentY_0 (FF)
   Destination:       collision (FF)
   Source Clock:      vga/clk_div/clk_out1 rising
@@ -512,7 +559,7 @@ Delay:               5.803ns (Levels of Logic = 13)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              4   0.514   0.568  vga/CurrentY_0 (vga/CurrentY_0)
+     FDR:C->Q              2   0.514   0.449  vga/CurrentY_0 (vga/CurrentY_0)
      LUT2:I1->O            1   0.612   0.000  Mcompar_color_cmp_lt0000_lut<0> (Mcompar_color_cmp_lt0000_lut<0>)
      MUXCY:S->O            1   0.404   0.000  Mcompar_color_cmp_lt0000_cy<0> (Mcompar_color_cmp_lt0000_cy<0>)
      MUXCY:CI->O           1   0.052   0.000  Mcompar_color_cmp_lt0000_cy<1> (Mcompar_color_cmp_lt0000_cy<1>)
@@ -523,47 +570,41 @@ Delay:               5.803ns (Levels of Logic = 13)
      MUXCY:CI->O           1   0.052   0.000  Mcompar_color_cmp_lt0000_cy<6> (Mcompar_color_cmp_lt0000_cy<6>)
      MUXCY:CI->O           1   0.052   0.000  Mcompar_color_cmp_lt0000_cy<7> (Mcompar_color_cmp_lt0000_cy<7>)
      MUXCY:CI->O           1   0.052   0.000  Mcompar_color_cmp_lt0000_cy<8> (Mcompar_color_cmp_lt0000_cy<8>)
-     MUXCY:CI->O           9   0.399   0.727  Mcompar_color_cmp_lt0000_cy<9> (Mcompar_color_cmp_lt0000_cy<9>)
-     LUT3_L:I2->LO         1   0.612   0.103  color_mux0000<0>11_SW0 (N22)
-     LUT4:I3->O            1   0.612   0.357  collision_not00011 (collision_not0001)
+     MUXCY:CI->O           5   0.399   0.568  Mcompar_color_cmp_lt0000_cy<9> (Mcompar_color_cmp_lt0000_cy<9>)
+     LUT3_L:I2->LO         1   0.612   0.103  collision_not000111_SW0 (N38)
+     LUT4:I3->O            1   0.612   0.357  collision_not00012 (collision_not0001)
      FDE:CE                    0.483          collision
     ----------------------------------------
-    Total                      5.803ns (4.049ns logic, 1.755ns route)
-                                       (69.8% logic, 30.2% route)
+    Total                      5.526ns (4.049ns logic, 1.477ns route)
+                                       (73.3% logic, 26.7% route)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'turn'
-  Clock period: 7.460ns (frequency: 134.049MHz)
-  Total number of paths / destination ports: 1943 / 38
+Timing constraint: Default period analysis for Clock 'turn1'
+  Clock period: 8.800ns (frequency: 113.637MHz)
+  Total number of paths / destination ports: 2978 / 54
 -------------------------------------------------------------------------
-Delay:               7.460ns (Levels of Logic = 13)
-  Source:            playerPosX_6 (FF)
-  Destination:       playerPosX_8 (FF)
-  Source Clock:      turn rising
-  Destination Clock: turn rising
+Delay:               8.800ns (Levels of Logic = 7)
+  Source:            playerPosY_5 (FF)
+  Destination:       playerPosX_0 (FF)
+  Source Clock:      turn1 rising
+  Destination Clock: turn1 rising
 
-  Data Path: playerPosX_6 to playerPosX_8
+  Data Path: playerPosY_5 to playerPosX_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              5   0.514   0.690  playerPosX_6 (playerPosX_6)
-     LUT4:I0->O            1   0.612   0.509  playerPosX_and0003_SW0 (N20)
-     LUT4_D:I0->O         22   0.612   1.058  playerPosX_and0003 (playerPosX_and0003)
-     LUT3:I1->O            1   0.612   0.000  Maddsub_playerPosX_share0000_lut<0> (Maddsub_playerPosX_share0000_lut<0>)
-     MUXCY:S->O            1   0.404   0.000  Maddsub_playerPosX_share0000_cy<0> (Maddsub_playerPosX_share0000_cy<0>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<1> (Maddsub_playerPosX_share0000_cy<1>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<2> (Maddsub_playerPosX_share0000_cy<2>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<3> (Maddsub_playerPosX_share0000_cy<3>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<4> (Maddsub_playerPosX_share0000_cy<4>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<5> (Maddsub_playerPosX_share0000_cy<5>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<6> (Maddsub_playerPosX_share0000_cy<6>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<7> (Maddsub_playerPosX_share0000_cy<7>)
-     XORCY:CI->O           1   0.699   0.509  Maddsub_playerPosX_share0000_xor<8> (playerPosX_share0000<8>)
-     LUT3:I0->O            1   0.612   0.000  playerPosX_mux0000<8>1 (playerPosX_mux0000<8>)
-     FDE:D                     0.268          playerPosX_8
+     FDSE:C->Q             8   0.514   0.712  playerPosY_5 (playerPosY_5)
+     LUT2_L:I1->LO         1   0.612   0.103  playerPosX_cmp_le0001228 (playerPosX_cmp_le0001228)
+     LUT4:I3->O            1   0.612   0.426  playerPosX_cmp_le0001233 (playerPosX_cmp_le0001233)
+     LUT2_D:I1->LO         1   0.612   0.103  playerPosX_cmp_le0001236 (N64)
+     LUT4:I3->O           12   0.612   0.820  playerPosX_or00051 (playerPosX_or0005)
+     LUT4_D:I3->LO         1   0.612   0.103  playerPosY_not000221 (N71)
+     LUT4:I3->O            4   0.612   0.502  mapX_not00021 (mapX_not0002)
+     LUT4:I3->O           10   0.612   0.750  playerPosX_not000259 (playerPosX_not0002)
+     FDRE:CE                   0.483          playerPosX_0
     ----------------------------------------
-    Total                      7.460ns (4.693ns logic, 2.766ns route)
-                                       (62.9% logic, 37.1% route)
+    Total                      8.800ns (5.281ns logic, 3.519ns route)
+                                       (60.0% logic, 40.0% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_50MHz'
@@ -588,41 +629,40 @@ Delay:               2.131ns (Levels of Logic = 1)
                                        (65.4% logic, 34.6% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'turn'
-  Total number of paths / destination ports: 252 / 38
+Timing constraint: Default OFFSET IN BEFORE for Clock 'turn1'
+  Total number of paths / destination ports: 211 / 63
 -------------------------------------------------------------------------
-Offset:              6.667ns (Levels of Logic = 13)
-  Source:            BUTTON<0> (PAD)
-  Destination:       playerPosX_8 (FF)
-  Destination Clock: turn rising
+Offset:              5.422ns (Levels of Logic = 12)
+  Source:            BUTTON<1> (PAD)
+  Destination:       playerPosY_8 (FF)
+  Destination Clock: turn1 rising
 
-  Data Path: BUTTON<0> to playerPosX_8
+  Data Path: BUTTON<1> to playerPosY_8
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             1   1.106   0.426  BUTTON_0_IBUF (BUTTON_0_IBUF)
-     LUT4_D:I1->O         22   0.612   1.058  playerPosX_and0003 (playerPosX_and0003)
-     LUT3:I1->O            1   0.612   0.000  Maddsub_playerPosX_share0000_lut<0> (Maddsub_playerPosX_share0000_lut<0>)
-     MUXCY:S->O            1   0.404   0.000  Maddsub_playerPosX_share0000_cy<0> (Maddsub_playerPosX_share0000_cy<0>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<1> (Maddsub_playerPosX_share0000_cy<1>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<2> (Maddsub_playerPosX_share0000_cy<2>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<3> (Maddsub_playerPosX_share0000_cy<3>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<4> (Maddsub_playerPosX_share0000_cy<4>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<5> (Maddsub_playerPosX_share0000_cy<5>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<6> (Maddsub_playerPosX_share0000_cy<6>)
-     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosX_share0000_cy<7> (Maddsub_playerPosX_share0000_cy<7>)
-     XORCY:CI->O           1   0.699   0.509  Maddsub_playerPosX_share0000_xor<8> (playerPosX_share0000<8>)
-     LUT3:I0->O            1   0.612   0.000  playerPosX_mux0000<8>1 (playerPosX_mux0000<8>)
-     FDE:D                     0.268          playerPosX_8
+     IBUF:I->O            12   1.106   0.847  BUTTON_1_IBUF (BUTTON_1_IBUF)
+     LUT3:I2->O            1   0.612   0.357  playerPosY_mux00022 (playerPosY_mux0002)
+     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosY_share0000_cy<0> (Maddsub_playerPosY_share0000_cy<0>)
+     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosY_share0000_cy<1> (Maddsub_playerPosY_share0000_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosY_share0000_cy<2> (Maddsub_playerPosY_share0000_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosY_share0000_cy<3> (Maddsub_playerPosY_share0000_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosY_share0000_cy<4> (Maddsub_playerPosY_share0000_cy<4>)
+     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosY_share0000_cy<5> (Maddsub_playerPosY_share0000_cy<5>)
+     MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosY_share0000_cy<6> (Maddsub_playerPosY_share0000_cy<6>)
+     MUXCY:CI->O           0   0.052   0.000  Maddsub_playerPosY_share0000_cy<7> (Maddsub_playerPosY_share0000_cy<7>)
+     XORCY:CI->O           1   0.699   0.509  Maddsub_playerPosY_share0000_xor<8> (playerPosY_share0000<8>)
+     LUT4:I0->O            1   0.612   0.000  playerPosY_mux0000<8>1 (playerPosY_mux0000<8>)
+     FDRE:D                    0.268          playerPosY_8
     ----------------------------------------
-    Total                      6.667ns (4.673ns logic, 1.993ns route)
-                                       (70.1% logic, 29.9% route)
+    Total                      5.422ns (3.709ns logic, 1.713ns route)
+                                       (68.4% logic, 31.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'vga/clk_div/clk_out1'
   Total number of paths / destination ports: 55 / 44
 -------------------------------------------------------------------------
-Offset:              4.708ns (Levels of Logic = 3)
+Offset:              5.012ns (Levels of Logic = 3)
   Source:            SWITCH<3> (PAD)
   Destination:       vga/HS (FF)
   Destination Clock: vga/clk_div/clk_out1 rising
@@ -631,45 +671,45 @@ Offset:              4.708ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            13   1.106   0.866  SWITCH_3_IBUF (SWITCH_3_IBUF)
-     LUT3:I2->O            1   0.612   0.360  vga/HS_not0001_SW0 (N14)
-     LUT4:I3->O            1   0.612   0.357  vga/HS_not0001 (vga/HS_not0001)
+     IBUF:I->O            36   1.106   1.104  SWITCH_3_IBUF (SWITCH_3_IBUF)
+     LUT3:I2->O            1   0.612   0.426  vga/HS_not0001_SW0 (N17)
+     LUT4:I1->O            1   0.612   0.357  vga/HS_not0001 (vga/HS_not0001)
      FDR:R                     0.795          vga/HS
     ----------------------------------------
-    Total                      4.708ns (3.125ns logic, 1.583ns route)
-                                       (66.4% logic, 33.6% route)
+    Total                      5.012ns (3.125ns logic, 1.887ns route)
+                                       (62.4% logic, 37.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'vga/clk_div/clk_out1'
   Total number of paths / destination ports: 18 / 10
 -------------------------------------------------------------------------
-Offset:              5.364ns (Levels of Logic = 2)
+Offset:              5.445ns (Levels of Logic = 2)
   Source:            vga/Blank (FF)
-  Destination:       BLUE<1> (PAD)
+  Destination:       GREEN<2> (PAD)
   Source Clock:      vga/clk_div/clk_out1 rising
 
-  Data Path: vga/Blank to BLUE<1>
+  Data Path: vga/Blank to GREEN<2>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              8   0.514   0.712  vga/Blank (vga/Blank)
-     LUT2:I1->O            1   0.612   0.357  vga/RED<2>1 (RED_2_OBUF)
-     OBUF:I->O                 3.169          RED_2_OBUF (RED<2>)
+     FDR:C->Q              4   0.514   0.651  vga/Blank (vga/Blank)
+     LUT2:I0->O            4   0.612   0.499  vga/RED<2>1 (GREEN_0_OBUF)
+     OBUF:I->O                 3.169          GREEN_0_OBUF (GREEN<0>)
     ----------------------------------------
-    Total                      5.364ns (4.295ns logic, 1.069ns route)
-                                       (80.1% logic, 19.9% route)
+    Total                      5.445ns (4.295ns logic, 1.150ns route)
+                                       (78.9% logic, 21.1% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 6.83 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 6.76 secs
  
 --> 
 
-Total memory usage is 262564 kilobytes
+Total memory usage is 266748 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    6 (   0 filtered)
-Number of infos    :    7 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
+Number of infos    :   10 (   0 filtered)
 
