@@ -107,12 +107,18 @@ Slice Utilization Ratio Delta      : 5
 Compiling verilog file "StartCastle.v" in library work
 Compiling verilog file "HallwayTop.v" in library work
 Module <StartCastle> compiled
-Compiling verilog file "clock_shift.v" in library work
+Compiling verilog file "HallwayRight.v" in library work
 Module <HallwayTop> compiled
+Compiling verilog file "HallwayLeft.v" in library work
+Module <HallwayRight> compiled
+Compiling verilog file "clock_shift.v" in library work
+Module <HallwayLeft> compiled
 Compiling verilog file "clock_divider.v" in library work
 Module <clock_shift> compiled
-Compiling verilog file "vga_driver.v" in library work
+Compiling verilog file "BlackKeyRoom.v" in library work
 Module <clock_divider> compiled
+Compiling verilog file "vga_driver.v" in library work
+Module <BlackKeyRoom> compiled
 Compiling verilog file "map.v" in library work
 Module <vga_driver> compiled
 Compiling verilog file "main.v" in library work
@@ -149,6 +155,12 @@ Analyzing hierarchy for module <StartCastle> in library <work>.
 
 Analyzing hierarchy for module <HallwayTop> in library <work>.
 
+Analyzing hierarchy for module <HallwayRight> in library <work>.
+
+Analyzing hierarchy for module <BlackKeyRoom> in library <work>.
+
+Analyzing hierarchy for module <HallwayLeft> in library <work>.
+
 
 =========================================================================
 *                            HDL Analysis                               *
@@ -183,6 +195,15 @@ Module <StartCastle> is correct for synthesis.
  
 Analyzing module <HallwayTop> in library <work>.
 Module <HallwayTop> is correct for synthesis.
+ 
+Analyzing module <HallwayRight> in library <work>.
+Module <HallwayRight> is correct for synthesis.
+ 
+Analyzing module <BlackKeyRoom> in library <work>.
+Module <BlackKeyRoom> is correct for synthesis.
+ 
+Analyzing module <HallwayLeft> in library <work>.
+Module <HallwayLeft> is correct for synthesis.
  
 
 =========================================================================
@@ -222,15 +243,57 @@ Unit <StartCastle> synthesized.
 Synthesizing Unit <HallwayTop>.
     Related source file is "HallwayTop.v".
     Found 8-bit register for signal <mColor>.
-    Found 10-bit comparator greatequal for signal <mColor$cmp_ge0000> created at line 40.
+    Found 10-bit comparator greatequal for signal <mColor$cmp_ge0000> created at line 37.
     Found 9-bit comparator less for signal <mColor$cmp_lt0000> created at line 34.
-    Found 10-bit comparator less for signal <mColor$cmp_lt0001> created at line 37.
-    Found 9-bit comparator less for signal <mColor$cmp_lt0002> created at line 40.
-    Found 10-bit comparator less for signal <mColor$cmp_lt0003> created at line 40.
+    Found 9-bit comparator less for signal <mColor$cmp_lt0001> created at line 37.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0002> created at line 37.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+	inferred   4 Comparator(s).
+Unit <HallwayTop> synthesized.
+
+
+Synthesizing Unit <HallwayRight>.
+    Related source file is "HallwayRight.v".
+    Found 8-bit register for signal <mColor>.
+    Found 9-bit comparator greatequal for signal <mColor$cmp_ge0000> created at line 42.
+    Found 10-bit comparator greatequal for signal <mColor$cmp_ge0001> created at line 42.
+    Found 9-bit comparator less for signal <mColor$cmp_lt0000> created at line 34.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0001> created at line 38.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0002> created at line 42.
     Summary:
 	inferred   8 D-type flip-flop(s).
 	inferred   5 Comparator(s).
-Unit <HallwayTop> synthesized.
+Unit <HallwayRight> synthesized.
+
+
+Synthesizing Unit <BlackKeyRoom>.
+    Related source file is "BlackKeyRoom.v".
+    Found 8-bit register for signal <mColor>.
+    Found 10-bit comparator greatequal for signal <mColor$cmp_ge0000> created at line 35.
+    Found 9-bit comparator less for signal <mColor$cmp_lt0000> created at line 35.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0001> created at line 35.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0002> created at line 39.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0003> created at line 43.
+    Found 9-bit comparator less for signal <mColor$cmp_lt0004> created at line 47.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+	inferred   6 Comparator(s).
+Unit <BlackKeyRoom> synthesized.
+
+
+Synthesizing Unit <HallwayLeft>.
+    Related source file is "HallwayLeft.v".
+    Found 8-bit register for signal <mColor>.
+    Found 10-bit comparator greatequal for signal <mColor$cmp_ge0000> created at line 35.
+    Found 9-bit comparator less for signal <mColor$cmp_lt0000> created at line 35.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0001> created at line 35.
+    Found 10-bit comparator less for signal <mColor$cmp_lt0002> created at line 39.
+    Found 9-bit comparator less for signal <mColor$cmp_lt0003> created at line 42.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+	inferred   5 Comparator(s).
+Unit <HallwayLeft> synthesized.
 
 
 Synthesizing Unit <vga_driver>.
@@ -277,42 +340,149 @@ Unit <map_generator> synthesized.
 Synthesizing Unit <main>.
     Related source file is "main.v".
 WARNING:Xst:647 - Input <SWITCH<2:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 11-bit subtractor for signal <$sub0000> created at line 172.
-    Found 12-bit subtractor for signal <$sub0001> created at line 172.
-    Found 9-bit adder carry out for signal <add0000$addsub0000> created at line 172.
-    Found 10-bit adder carry out for signal <add0001$addsub0000> created at line 172.
+WARNING:Xst:1780 - Signal <yorgleY> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <yorgleX> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <yorgleMapY> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <yorgleMapX> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <rhindleY> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <rhindleX> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <rhindleMapY> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <rhindleMapX> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <grundleMapY> is used but never assigned. This sourceless signal will be automatically connected to value 0111.
+WARNING:Xst:653 - Signal <grundleMapX> is used but never assigned. This sourceless signal will be automatically connected to value 0100.
+    Using one-hot encoding for signal <dragState>.
+    Found 12-bit subtractor for signal <$sub0000> created at line 217.
+    Found 12-bit subtractor for signal <$sub0001> created at line 217.
+    Found 12-bit subtractor for signal <$sub0002> created at line 217.
+    Found 11-bit subtractor for signal <$sub0003> created at line 217.
+    Found 11-bit subtractor for signal <$sub0004> created at line 217.
+    Found 11-bit subtractor for signal <$sub0005> created at line 269.
+    Found 11-bit subtractor for signal <$sub0006> created at line 269.
+    Found 11-bit subtractor for signal <$sub0007> created at line 363.
+    Found 12-bit subtractor for signal <$sub0008> created at line 363.
+    Found 9-bit adder carry out for signal <add0000$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0001$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0002$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0003$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0004$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0005$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0006$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0007$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0008$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0009$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0010$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0011$addsub0000> created at line 217.
+    Found 10-bit adder carry out for signal <add0012$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0013$addsub0000> created at line 217.
+    Found 10-bit adder carry out for signal <add0014$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0015$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0016$addsub0000> created at line 217.
+    Found 10-bit adder carry out for signal <add0017$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0018$addsub0000> created at line 217.
+    Found 10-bit adder carry out for signal <add0019$addsub0000> created at line 217.
+    Found 10-bit adder carry out for signal <add0020$addsub0000> created at line 217.
+    Found 9-bit adder carry out for signal <add0021$addsub0000> created at line 269.
+    Found 9-bit adder carry out for signal <add0022$addsub0000> created at line 317.
+    Found 9-bit adder carry out for signal <add0023$addsub0000> created at line 363.
+    Found 10-bit adder carry out for signal <add0024$addsub0000> created at line 363.
     Found 1-bit register for signal <collision>.
-    Found 8-bit comparator equal for signal <collision$cmp_eq0000> created at line 175.
-    Found 10-bit comparator greatequal for signal <collision$cmp_ge0000> created at line 172.
-    Found 11-bit comparator greatequal for signal <collision$cmp_ge0001> created at line 172.
+    Found 8-bit comparator equal for signal <collision$cmp_eq0000> created at line 366.
+    Found 10-bit comparator greatequal for signal <collision$cmp_ge0000> created at line 363.
+    Found 11-bit comparator greatequal for signal <collision$cmp_ge0001> created at line 363.
     Found 8-bit register for signal <color>.
-    Found 10-bit comparator less for signal <color$cmp_lt0000> created at line 172.
-    Found 11-bit comparator less for signal <color$cmp_lt0001> created at line 172.
-    Found 11-bit comparator less for signal <color$cmp_lt0002> created at line 172.
-    Found 12-bit comparator less for signal <color$cmp_lt0003> created at line 172.
+    Found 12-bit comparator greatequal for signal <color$cmp_ge0000> created at line 217.
+    Found 9-bit comparator greatequal for signal <color$cmp_ge0001> created at line 217.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0002> created at line 217.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0003> created at line 217.
+    Found 12-bit comparator greatequal for signal <color$cmp_ge0004> created at line 217.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0005> created at line 217.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0006> created at line 217.
+    Found 12-bit comparator greatequal for signal <color$cmp_ge0007> created at line 217.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0008> created at line 217.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0009> created at line 217.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0010> created at line 217.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0011> created at line 217.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0012> created at line 217.
+    Found 11-bit comparator greatequal for signal <color$cmp_ge0013> created at line 217.
+    Found 11-bit comparator greatequal for signal <color$cmp_ge0014> created at line 217.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0015> created at line 217.
+    Found 11-bit comparator greatequal for signal <color$cmp_ge0016> created at line 217.
+    Found 11-bit comparator greatequal for signal <color$cmp_ge0017> created at line 217.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0018> created at line 217.
+    Found 11-bit comparator greatequal for signal <color$cmp_ge0019> created at line 217.
+    Found 11-bit comparator greatequal for signal <color$cmp_ge0020> created at line 217.
+    Found 11-bit comparator greatequal for signal <color$cmp_ge0021> created at line 269.
+    Found 11-bit comparator greatequal for signal <color$cmp_ge0022> created at line 269.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0023> created at line 269.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0024> created at line 269.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0025> created at line 269.
+    Found 10-bit comparator greatequal for signal <color$cmp_ge0026> created at line 317.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0000> created at line 217.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0001> created at line 217.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0002> created at line 217.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0003> created at line 217.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0004> created at line 217.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0005> created at line 217.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0006> created at line 217.
+    Found 9-bit comparator lessequal for signal <color$cmp_le0007> created at line 217.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0008> created at line 217.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0009> created at line 217.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0010> created at line 217.
+    Found 11-bit comparator lessequal for signal <color$cmp_le0011> created at line 269.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0012> created at line 269.
+    Found 11-bit comparator lessequal for signal <color$cmp_le0013> created at line 269.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0014> created at line 269.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0015> created at line 269.
+    Found 11-bit comparator lessequal for signal <color$cmp_le0016> created at line 269.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0017> created at line 269.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0018> created at line 317.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0019> created at line 317.
+    Found 10-bit comparator lessequal for signal <color$cmp_le0020> created at line 317.
+    Found 12-bit comparator less for signal <color$cmp_lt0000> created at line 217.
+    Found 12-bit comparator less for signal <color$cmp_lt0001> created at line 217.
+    Found 10-bit comparator less for signal <color$cmp_lt0002> created at line 217.
+    Found 11-bit comparator less for signal <color$cmp_lt0003> created at line 217.
+    Found 11-bit comparator less for signal <color$cmp_lt0004> created at line 217.
+    Found 11-bit comparator less for signal <color$cmp_lt0005> created at line 217.
+    Found 11-bit comparator less for signal <color$cmp_lt0006> created at line 217.
+    Found 11-bit comparator less for signal <color$cmp_lt0007> created at line 217.
+    Found 10-bit comparator less for signal <color$cmp_lt0008> created at line 363.
+    Found 11-bit comparator less for signal <color$cmp_lt0009> created at line 363.
+    Found 11-bit comparator less for signal <color$cmp_lt0010> created at line 363.
+    Found 12-bit comparator less for signal <color$cmp_lt0011> created at line 363.
     Found 16-bit up counter for signal <counter>.
-    Found 3-bit updown counter for signal <mapX>.
-    Found 3-bit updown counter for signal <mapY>.
+    Found 3-bit register for signal <dragState>.
+    Found 10-bit comparator equal for signal <dragState$cmp_eq0000> created at line 197.
+    Found 9-bit comparator equal for signal <dragState$cmp_eq0001> created at line 197.
+    Found 1-bit register for signal <dragStep>.
+    Found 10-bit updown counter for signal <grundleX>.
+    Found 10-bit comparator greater for signal <grundleX$cmp_gt0000> created at line 189.
+    Found 10-bit comparator less for signal <grundleX$cmp_lt0000> created at line 193.
+    Found 9-bit updown counter for signal <grundleY>.
+    Found 9-bit comparator greater for signal <grundleY$cmp_gt0000> created at line 191.
+    Found 9-bit comparator less for signal <grundleY$cmp_lt0000> created at line 195.
+    Found 4-bit updown counter for signal <mapX>.
+    Found 4-bit updown counter for signal <mapY>.
     Found 8-bit register for signal <playerColor>.
     Found 10-bit register for signal <playerPosX>.
-    Found 10-bit comparator greatequal for signal <playerPosX$cmp_ge0000> created at line 98.
-    Found 9-bit comparator greatequal for signal <playerPosX$cmp_ge0001> created at line 137.
-    Found 9-bit comparator greater for signal <playerPosX$cmp_gt0000> created at line 114.
-    Found 10-bit comparator greater for signal <playerPosX$cmp_gt0001> created at line 145.
-    Found 10-bit comparator lessequal for signal <playerPosX$cmp_le0000> created at line 122.
-    Found 9-bit comparator lessequal for signal <playerPosX$cmp_le0001> created at line 141.
-    Found 9-bit comparator less for signal <playerPosX$cmp_lt0000> created at line 137.
-    Found 10-bit comparator less for signal <playerPosX$cmp_lt0001> created at line 133.
+    Found 10-bit comparator greatequal for signal <playerPosX$cmp_ge0000> created at line 114.
+    Found 9-bit comparator greatequal for signal <playerPosX$cmp_ge0001> created at line 153.
+    Found 10-bit comparator greater for signal <playerPosX$cmp_gt0000> created at line 161.
+    Found 9-bit comparator greater for signal <playerPosX$cmp_gt0001> created at line 157.
+    Found 10-bit comparator lessequal for signal <playerPosX$cmp_le0000> created at line 138.
+    Found 9-bit comparator lessequal for signal <playerPosX$cmp_le0001> created at line 157.
+    Found 9-bit comparator less for signal <playerPosX$cmp_lt0000> created at line 153.
+    Found 10-bit comparator less for signal <playerPosX$cmp_lt0001> created at line 149.
     Found 10-bit addsub for signal <playerPosX$share0000>.
     Found 9-bit register for signal <playerPosY>.
     Found 9-bit addsub for signal <playerPosY$share0000>.
     Found 1-bit register for signal <turn>.
-    Found 16-bit comparator less for signal <turn$cmp_lt0000> created at line 81.
+    Found 16-bit comparator less for signal <turn$cmp_lt0000> created at line 97.
     Summary:
-	inferred   3 Counter(s).
-	inferred  37 D-type flip-flop(s).
-	inferred   6 Adder/Subtractor(s).
-	inferred  16 Comparator(s).
+	inferred   5 Counter(s).
+	inferred  41 D-type flip-flop(s).
+	inferred  36 Adder/Subtractor(s).
+	inferred  78 Comparator(s).
 Unit <main> synthesized.
 
 INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
@@ -321,38 +491,45 @@ INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmet
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 10
- 10-bit adder carry out                                : 1
+# Adders/Subtractors                                   : 40
+ 10-bit adder carry out                                : 6
  10-bit addsub                                         : 1
  10-bit subtractor                                     : 2
- 11-bit subtractor                                     : 1
- 12-bit subtractor                                     : 1
- 9-bit adder carry out                                 : 1
+ 11-bit subtractor                                     : 5
+ 12-bit subtractor                                     : 4
+ 9-bit adder carry out                                 : 19
  9-bit addsub                                          : 1
  9-bit subtractor                                      : 2
-# Counters                                             : 5
+# Counters                                             : 7
  10-bit up counter                                     : 2
+ 10-bit updown counter                                 : 1
  16-bit up counter                                     : 1
- 3-bit updown counter                                  : 2
-# Registers                                            : 17
- 1-bit register                                        : 8
+ 4-bit updown counter                                  : 2
+ 9-bit updown counter                                  : 1
+# Registers                                            : 22
+ 1-bit register                                        : 9
  10-bit register                                       : 2
- 8-bit register                                        : 5
+ 3-bit register                                        : 1
+ 8-bit register                                        : 8
  9-bit register                                        : 2
-# Comparators                                          : 36
- 10-bit comparator greatequal                          : 8
- 10-bit comparator greater                             : 1
- 10-bit comparator less                                : 12
- 10-bit comparator lessequal                           : 1
- 11-bit comparator greatequal                          : 1
- 11-bit comparator less                                : 2
- 12-bit comparator less                                : 1
+# Comparators                                          : 113
+ 10-bit comparator equal                               : 1
+ 10-bit comparator greatequal                          : 26
+ 10-bit comparator greater                             : 2
+ 10-bit comparator less                                : 20
+ 10-bit comparator lessequal                           : 18
+ 11-bit comparator greatequal                          : 9
+ 11-bit comparator less                                : 7
+ 11-bit comparator lessequal                           : 3
+ 12-bit comparator greatequal                          : 3
+ 12-bit comparator less                                : 3
  16-bit comparator less                                : 1
  8-bit comparator equal                                : 1
- 9-bit comparator greatequal                           : 2
- 9-bit comparator greater                              : 1
- 9-bit comparator less                                 : 4
- 9-bit comparator lessequal                            : 1
+ 9-bit comparator equal                                : 1
+ 9-bit comparator greatequal                           : 4
+ 9-bit comparator greater                              : 2
+ 9-bit comparator less                                 : 10
+ 9-bit comparator lessequal                            : 2
 
 =========================================================================
 
@@ -360,65 +537,111 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+WARNING:Xst:1710 - FF/Latch <mColor_0> (without init value) has a constant value of 0 in block <StartCastle>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <mColor_0> (without init value) has a constant value of 0 in block <HallwayTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <mColor_0> (without init value) has a constant value of 0 in block <HallwayRight>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <mColor_0> (without init value) has a constant value of 0 in block <BlackKeyRoom>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <mColor_0> (without init value) has a constant value of 0 in block <HallwayLeft>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <mColor_0> (without init value) has a constant value of 0 in block <map>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <color_0> has a constant value of 0 in block <main>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <playerColor_0> (without init value) has a constant value of 0 in block <main>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <playerColor_1> (without init value) has a constant value of 0 in block <main>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <playerColor_4> (without init value) has a constant value of 1 in block <main>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <dragState_2> has a constant value of 0 in block <main>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <mColor_4> (without init value) has a constant value of 1 in block <HallwayTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <mColor_4> (without init value) has a constant value of 1 in block <HallwayRight>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <mColor_4> (without init value) has a constant value of 1 in block <HallwayLeft>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <mColor_4> (without init value) has a constant value of 1 in block <StartCastle>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <mColor_4> (without init value) has a constant value of 1 in block <BlackKeyRoom>. This FF/Latch will be trimmed during the optimization process.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 10
- 10-bit adder carry out                                : 1
+# Adders/Subtractors                                   : 40
+ 10-bit adder carry out                                : 6
  10-bit addsub                                         : 1
  10-bit subtractor                                     : 2
- 11-bit subtractor                                     : 1
- 12-bit subtractor                                     : 1
- 9-bit adder carry out                                 : 1
+ 11-bit subtractor                                     : 5
+ 12-bit subtractor                                     : 4
+ 9-bit adder carry out                                 : 19
  9-bit addsub                                          : 1
  9-bit subtractor                                      : 2
-# Counters                                             : 5
+# Counters                                             : 7
  10-bit up counter                                     : 2
+ 10-bit updown counter                                 : 1
  16-bit up counter                                     : 1
- 3-bit updown counter                                  : 2
-# Registers                                            : 86
- Flip-Flops                                            : 86
-# Comparators                                          : 36
- 10-bit comparator greatequal                          : 8
- 10-bit comparator greater                             : 1
- 10-bit comparator less                                : 12
- 10-bit comparator lessequal                           : 1
- 11-bit comparator greatequal                          : 1
- 11-bit comparator less                                : 2
- 12-bit comparator less                                : 1
+ 4-bit updown counter                                  : 2
+ 9-bit updown counter                                  : 1
+# Registers                                            : 114
+ Flip-Flops                                            : 114
+# Comparators                                          : 113
+ 10-bit comparator equal                               : 1
+ 10-bit comparator greatequal                          : 26
+ 10-bit comparator greater                             : 2
+ 10-bit comparator less                                : 20
+ 10-bit comparator lessequal                           : 18
+ 11-bit comparator greatequal                          : 9
+ 11-bit comparator less                                : 7
+ 11-bit comparator lessequal                           : 3
+ 12-bit comparator greatequal                          : 3
+ 12-bit comparator less                                : 3
  16-bit comparator less                                : 1
  8-bit comparator equal                                : 1
- 9-bit comparator greatequal                           : 2
- 9-bit comparator greater                              : 1
- 9-bit comparator less                                 : 4
- 9-bit comparator lessequal                            : 1
+ 9-bit comparator equal                                : 1
+ 9-bit comparator greatequal                           : 4
+ 9-bit comparator greater                              : 2
+ 9-bit comparator less                                 : 10
+ 9-bit comparator lessequal                            : 2
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:1710 - FF/Latch <playerColor_0> (without init value) has a constant value of 0 in block <main>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <playerColor_1> (without init value) has a constant value of 0 in block <main>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <playerColor_4> (without init value) has a constant value of 1 in block <main>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <dragState_2> has a constant value of 0 in block <main>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <playerColor_2> in Unit <main> is equivalent to the following FF/Latch, which will be removed : <playerColor_3> 
+INFO:Xst:2261 - The FF/Latch <playerColor_5> in Unit <main> is equivalent to the following 2 FFs/Latches, which will be removed : <playerColor_6> <playerColor_7> 
+INFO:Xst:2261 - The FF/Latch <BlackKeyRoom/mColor_7> in Unit <map_generator> is equivalent to the following FF/Latch, which will be removed : <BlackKeyRoom/mColor_5> 
+INFO:Xst:2261 - The FF/Latch <StartCastle/mColor_7> in Unit <map_generator> is equivalent to the following FF/Latch, which will be removed : <StartCastle/mColor_5> 
+INFO:Xst:2261 - The FF/Latch <HallwayTop/mColor_7> in Unit <map_generator> is equivalent to the following FF/Latch, which will be removed : <HallwayTop/mColor_5> 
+INFO:Xst:2261 - The FF/Latch <HallwayLeft/mColor_7> in Unit <map_generator> is equivalent to the following FF/Latch, which will be removed : <HallwayLeft/mColor_5> 
+INFO:Xst:2261 - The FF/Latch <HallwayRight/mColor_7> in Unit <map_generator> is equivalent to the following FF/Latch, which will be removed : <HallwayRight/mColor_5> 
+WARNING:Xst:1710 - FF/Latch <mColor_0> (without init value) has a constant value of 0 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <StartCastle/mColor_0> (without init value) has a constant value of 0 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <HallwayTop/mColor_0> (without init value) has a constant value of 0 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <HallwayRight/mColor_0> (without init value) has a constant value of 0 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BlackKeyRoom/mColor_0> (without init value) has a constant value of 0 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <HallwayLeft/mColor_0> (without init value) has a constant value of 0 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <HallwayTop/mColor_4> (without init value) has a constant value of 1 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <HallwayRight/mColor_4> (without init value) has a constant value of 1 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <HallwayLeft/mColor_4> (without init value) has a constant value of 1 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <StartCastle/mColor_4> (without init value) has a constant value of 1 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <BlackKeyRoom/mColor_4> (without init value) has a constant value of 1 in block <map_generator>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <mColor_5> in Unit <map_generator> is equivalent to the following FF/Latch, which will be removed : <mColor_7> 
 
 Optimizing unit <main> ...
 
 Optimizing unit <vga_driver> ...
 
 Optimizing unit <map_generator> ...
+WARNING:Xst:1293 - FF/Latch <color_0> has a constant value of 0 in block <main>. This FF/Latch will be trimmed during the optimization process.
 
 Mapping all equations...
 Building and optimizing final netlist ...
-INFO:Xst:2261 - The FF/Latch <playerColor_2> in Unit <main> is equivalent to the following 5 FFs/Latches, which will be removed : <playerColor_3> <playerColor_4> <playerColor_5> <playerColor_6> <playerColor_7> 
-INFO:Xst:2261 - The FF/Latch <playerColor_0> in Unit <main> is equivalent to the following FF/Latch, which will be removed : <playerColor_1> 
-INFO:Xst:2261 - The FF/Latch <map/StartCastle/mColor_2> in Unit <main> is equivalent to the following 3 FFs/Latches, which will be removed : <map/StartCastle/mColor_4> <map/StartCastle/mColor_5> <map/StartCastle/mColor_7> 
-INFO:Xst:2261 - The FF/Latch <map/HallwayTopLeft/mColor_2> in Unit <main> is equivalent to the following 5 FFs/Latches, which will be removed : <map/HallwayTopLeft/mColor_3> <map/HallwayTopLeft/mColor_4> <map/HallwayTopLeft/mColor_5> <map/HallwayTopLeft/mColor_6> <map/HallwayTopLeft/mColor_7> 
-INFO:Xst:2261 - The FF/Latch <map/mColor_7> in Unit <main> is equivalent to the following 3 FFs/Latches, which will be removed : <map/mColor_5> <map/mColor_4> <map/mColor_2> 
-INFO:Xst:2261 - The FF/Latch <map/StartCastle/mColor_3> in Unit <main> is equivalent to the following FF/Latch, which will be removed : <map/StartCastle/mColor_6> 
-INFO:Xst:2261 - The FF/Latch <map/mColor_6> in Unit <main> is equivalent to the following FF/Latch, which will be removed : <map/mColor_3> 
-INFO:Xst:2261 - The FF/Latch <color_2> in Unit <main> is equivalent to the following 3 FFs/Latches, which will be removed : <color_4> <color_5> <color_7> 
-INFO:Xst:2261 - The FF/Latch <color_3> in Unit <main> is equivalent to the following FF/Latch, which will be removed : <color_6> 
-Found area constraint ratio of 100 (+ 5) on block main, actual ratio is 17.
+INFO:Xst:2261 - The FF/Latch <color_5> in Unit <main> is equivalent to the following FF/Latch, which will be removed : <color_7> 
+Found area constraint ratio of 100 (+ 5) on block main, actual ratio is 64.
+FlipFlop vga/CurrentY_0 has been replicated 1 time(s)
+FlipFlop vga/CurrentY_1 has been replicated 1 time(s)
+FlipFlop vga/CurrentY_2 has been replicated 1 time(s)
+FlipFlop vga/CurrentY_3 has been replicated 1 time(s)
+FlipFlop vga/CurrentY_4 has been replicated 1 time(s)
+FlipFlop vga/CurrentY_5 has been replicated 1 time(s)
+FlipFlop vga/CurrentY_6 has been replicated 1 time(s)
+FlipFlop vga/CurrentY_8 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -426,8 +649,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 105
- Flip-Flops                                            : 105
+# Registers                                            : 159
+ Flip-Flops                                            : 159
 
 =========================================================================
 
@@ -456,33 +679,34 @@ Design Statistics
 # IOs                              : 19
 
 Cell Usage :
-# BELS                             : 518
+# BELS                             : 1830
 #      GND                         : 1
-#      INV                         : 31
+#      INV                         : 40
 #      LUT1                        : 52
-#      LUT2                        : 54
+#      LUT2                        : 458
 #      LUT2_D                      : 1
-#      LUT2_L                      : 3
-#      LUT3                        : 36
-#      LUT3_D                      : 3
-#      LUT3_L                      : 3
-#      LUT4                        : 83
-#      LUT4_D                      : 6
-#      LUT4_L                      : 8
-#      MUXCY                       : 136
-#      MUXF5                       : 3
+#      LUT2_L                      : 2
+#      LUT3                        : 143
+#      LUT3_D                      : 1
+#      LUT3_L                      : 4
+#      LUT4                        : 325
+#      LUT4_D                      : 4
+#      LUT4_L                      : 12
+#      MUXCY                       : 657
+#      MUXF5                       : 13
 #      VCC                         : 1
-#      XORCY                       : 97
-# FlipFlops/Latches                : 105
-#      FD                          : 4
-#      FDE                         : 1
+#      XORCY                       : 116
+# FlipFlops/Latches                : 159
+#      FD                          : 12
+#      FDE                         : 3
 #      FDE_1                       : 1
-#      FDR                         : 58
-#      FDRE                        : 29
-#      FDS                         : 4
-#      FDSE                        : 8
-# Clock Buffers                    : 3
-#      BUFG                        : 2
+#      FDR                         : 66
+#      FDRE                        : 40
+#      FDRS                        : 9
+#      FDS                         : 10
+#      FDSE                        : 18
+# Clock Buffers                    : 4
+#      BUFG                        : 3
 #      BUFGP                       : 1
 # IO Buffers                       : 15
 #      IBUF                        : 5
@@ -494,12 +718,12 @@ Device utilization summary:
 
 Selected Device : 3s100ecp132-5 
 
- Number of Slices:                      151  out of    960    15%  
- Number of Slice Flip Flops:            105  out of   1920     5%  
- Number of 4 input LUTs:                280  out of   1920    14%  
+ Number of Slices:                      547  out of    960    56%  
+ Number of Slice Flip Flops:            159  out of   1920     8%  
+ Number of 4 input LUTs:               1042  out of   1920    54%  
  Number of IOs:                          19
  Number of bonded IOBs:                  16  out of     83    19%  
- Number of GCLKs:                         3  out of     24    12%  
+ Number of GCLKs:                         4  out of     24    16%  
 
 ---------------------------
 Partition Resource Summary:
@@ -522,8 +746,9 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-vga/clk_div/clk_out1               | BUFG                   | 77    |
-turn1                              | BUFG                   | 27    |
+vga/clk_div/clk_out1               | BUFG                   | 107   |
+turn1                              | BUFG                   | 30    |
+dragStep1                          | BUFG                   | 21    |
 clk_50MHz                          | BUFGP                  | 1     |
 -----------------------------------+------------------------+-------+
 
@@ -535,9 +760,9 @@ Timing Summary:
 ---------------
 Speed Grade: -5
 
-   Minimum period: 11.051ns (Maximum Frequency: 90.490MHz)
-   Minimum input arrival time before clock: 5.422ns
-   Maximum output required time after clock: 5.445ns
+   Minimum period: 19.592ns (Maximum Frequency: 51.042MHz)
+   Minimum input arrival time before clock: 5.437ns
+   Maximum output required time after clock: 5.313ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -546,65 +771,108 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'vga/clk_div/clk_out1'
-  Clock period: 11.051ns (frequency: 90.490MHz)
-  Total number of paths / destination ports: 1795 / 152
+  Clock period: 19.592ns (frequency: 51.042MHz)
+  Total number of paths / destination ports: 19053 / 202
 -------------------------------------------------------------------------
-Delay:               5.526ns (Levels of Logic = 13)
-  Source:            vga/CurrentY_0 (FF)
+Delay:               9.796ns (Levels of Logic = 16)
+  Source:            vga/CurrentY_0_1 (FF)
   Destination:       collision (FF)
   Source Clock:      vga/clk_div/clk_out1 rising
   Destination Clock: vga/clk_div/clk_out1 falling
 
-  Data Path: vga/CurrentY_0 to collision
+  Data Path: vga/CurrentY_0_1 to collision
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              2   0.514   0.449  vga/CurrentY_0 (vga/CurrentY_0)
-     LUT2:I1->O            1   0.612   0.000  Mcompar_color_cmp_lt0000_lut<0> (Mcompar_color_cmp_lt0000_lut<0>)
-     MUXCY:S->O            1   0.404   0.000  Mcompar_color_cmp_lt0000_cy<0> (Mcompar_color_cmp_lt0000_cy<0>)
-     MUXCY:CI->O           1   0.052   0.000  Mcompar_color_cmp_lt0000_cy<1> (Mcompar_color_cmp_lt0000_cy<1>)
-     MUXCY:CI->O           1   0.052   0.000  Mcompar_color_cmp_lt0000_cy<2> (Mcompar_color_cmp_lt0000_cy<2>)
-     MUXCY:CI->O           1   0.052   0.000  Mcompar_color_cmp_lt0000_cy<3> (Mcompar_color_cmp_lt0000_cy<3>)
-     MUXCY:CI->O           1   0.052   0.000  Mcompar_color_cmp_lt0000_cy<4> (Mcompar_color_cmp_lt0000_cy<4>)
-     MUXCY:CI->O           1   0.052   0.000  Mcompar_color_cmp_lt0000_cy<5> (Mcompar_color_cmp_lt0000_cy<5>)
-     MUXCY:CI->O           1   0.052   0.000  Mcompar_color_cmp_lt0000_cy<6> (Mcompar_color_cmp_lt0000_cy<6>)
-     MUXCY:CI->O           1   0.052   0.000  Mcompar_color_cmp_lt0000_cy<7> (Mcompar_color_cmp_lt0000_cy<7>)
-     MUXCY:CI->O           1   0.052   0.000  Mcompar_color_cmp_lt0000_cy<8> (Mcompar_color_cmp_lt0000_cy<8>)
-     MUXCY:CI->O           5   0.399   0.568  Mcompar_color_cmp_lt0000_cy<9> (Mcompar_color_cmp_lt0000_cy<9>)
-     LUT3_L:I2->LO         1   0.612   0.103  collision_not000111_SW0 (N38)
-     LUT4:I3->O            1   0.612   0.357  collision_not00012 (collision_not0001)
+     FDR:C->Q             34   0.514   1.142  vga/CurrentY_0_1 (vga/CurrentY_0_1)
+     LUT2:I1->O            1   0.612   0.000  Mcompar_color_cmp_le0001_lut<0> (Mcompar_color_cmp_le0001_lut<0>)
+     MUXCY:S->O            1   0.404   0.000  Mcompar_color_cmp_le0001_cy<0> (Mcompar_color_cmp_le0001_cy<0>)
+     MUXCY:CI->O           1   0.051   0.000  Mcompar_color_cmp_le0001_cy<1> (Mcompar_color_cmp_le0001_cy<1>)
+     MUXCY:CI->O           1   0.051   0.000  Mcompar_color_cmp_le0001_cy<2> (Mcompar_color_cmp_le0001_cy<2>)
+     MUXCY:CI->O           1   0.051   0.000  Mcompar_color_cmp_le0001_cy<3> (Mcompar_color_cmp_le0001_cy<3>)
+     MUXCY:CI->O           1   0.051   0.000  Mcompar_color_cmp_le0001_cy<4> (Mcompar_color_cmp_le0001_cy<4>)
+     MUXCY:CI->O           1   0.051   0.000  Mcompar_color_cmp_le0001_cy<5> (Mcompar_color_cmp_le0001_cy<5>)
+     MUXCY:CI->O           1   0.051   0.000  Mcompar_color_cmp_le0001_cy<6> (Mcompar_color_cmp_le0001_cy<6>)
+     MUXCY:CI->O           1   0.051   0.000  Mcompar_color_cmp_le0001_cy<7> (Mcompar_color_cmp_le0001_cy<7>)
+     MUXCY:CI->O           1   0.051   0.000  Mcompar_color_cmp_le0001_cy<8> (Mcompar_color_cmp_le0001_cy<8>)
+     MUXCY:CI->O           5   0.399   0.568  Mcompar_color_cmp_le0001_cy<9> (color_cmp_le0001)
+     LUT4:I2->O            1   0.612   0.387  color_and00004 (color_and00004)
+     LUT4:I2->O            1   0.612   0.426  color_and000012 (color_and000012)
+     LUT4:I1->O            1   0.612   0.426  color_and0000120 (color_and0000120)
+     LUT4:I1->O            7   0.612   0.605  color_and0000242 (color_and0000)
+     LUT4:I3->O            1   0.612   0.357  collision_not00011 (collision_not0001)
      FDE:CE                    0.483          collision
     ----------------------------------------
-    Total                      5.526ns (4.049ns logic, 1.477ns route)
-                                       (73.3% logic, 26.7% route)
+    Total                      9.796ns (5.885ns logic, 3.911ns route)
+                                       (60.1% logic, 39.9% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'turn1'
-  Clock period: 8.800ns (frequency: 113.637MHz)
-  Total number of paths / destination ports: 2978 / 54
+  Clock period: 8.794ns (frequency: 113.711MHz)
+  Total number of paths / destination ports: 3841 / 61
 -------------------------------------------------------------------------
-Delay:               8.800ns (Levels of Logic = 7)
-  Source:            playerPosY_5 (FF)
+Delay:               8.794ns (Levels of Logic = 6)
+  Source:            playerPosY_6 (FF)
   Destination:       playerPosX_0 (FF)
   Source Clock:      turn1 rising
   Destination Clock: turn1 rising
 
-  Data Path: playerPosY_5 to playerPosX_0
+  Data Path: playerPosY_6 to playerPosX_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDSE:C->Q             8   0.514   0.712  playerPosY_5 (playerPosY_5)
-     LUT2_L:I1->LO         1   0.612   0.103  playerPosX_cmp_le0001228 (playerPosX_cmp_le0001228)
-     LUT4:I3->O            1   0.612   0.426  playerPosX_cmp_le0001233 (playerPosX_cmp_le0001233)
-     LUT2_D:I1->LO         1   0.612   0.103  playerPosX_cmp_le0001236 (N64)
-     LUT4:I3->O           12   0.612   0.820  playerPosX_or00051 (playerPosX_or0005)
-     LUT4_D:I3->LO         1   0.612   0.103  playerPosY_not000221 (N71)
-     LUT4:I3->O            4   0.612   0.502  mapX_not00021 (mapX_not0002)
-     LUT4:I3->O           10   0.612   0.750  playerPosX_not000259 (playerPosX_not0002)
+     FDSE:C->Q             8   0.514   0.795  playerPosY_6 (playerPosY_6)
+     LUT3:I0->O            1   0.612   0.509  playerPosX_cmp_ge0001112 (playerPosX_cmp_ge0001112)
+     LUT3:I0->O            7   0.612   0.632  playerPosX_cmp_ge0001114 (playerPosX_cmp_ge0001)
+     LUT3:I2->O            3   0.612   0.520  playerPosX_or00051 (playerPosX_or0005)
+     LUT4:I1->O            2   0.612   0.410  playerPosX_not000211 (N36)
+     LUT4:I2->O            1   0.612   0.509  playerPosX_not0002_SW0 (N16)
+     LUT4:I0->O           10   0.612   0.750  playerPosX_not0002 (playerPosX_not0002)
      FDRE:CE                   0.483          playerPosX_0
     ----------------------------------------
-    Total                      8.800ns (5.281ns logic, 3.519ns route)
-                                       (60.0% logic, 40.0% route)
+    Total                      8.794ns (4.669ns logic, 4.125ns route)
+                                       (53.1% logic, 46.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'dragStep1'
+  Clock period: 6.640ns (frequency: 150.612MHz)
+  Total number of paths / destination ports: 1898 / 40
+-------------------------------------------------------------------------
+Delay:               6.640ns (Levels of Logic = 20)
+  Source:            grundleY_0 (FF)
+  Destination:       grundleY_8 (FF)
+  Source Clock:      dragStep1 rising
+  Destination Clock: dragStep1 rising
+
+  Data Path: grundleY_0 to grundleY_8
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q            40   0.514   1.144  grundleY_0 (grundleY_0)
+     LUT2:I1->O            1   0.612   0.000  Mcompar_grundleY_cmp_lt0000_lut<0> (Mcompar_grundleY_cmp_lt0000_lut<0>)
+     MUXCY:S->O            1   0.404   0.000  Mcompar_grundleY_cmp_lt0000_cy<0> (Mcompar_grundleY_cmp_lt0000_cy<0>)
+     MUXCY:CI->O           1   0.052   0.000  Mcompar_grundleY_cmp_lt0000_cy<1> (Mcompar_grundleY_cmp_lt0000_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  Mcompar_grundleY_cmp_lt0000_cy<2> (Mcompar_grundleY_cmp_lt0000_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  Mcompar_grundleY_cmp_lt0000_cy<3> (Mcompar_grundleY_cmp_lt0000_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  Mcompar_grundleY_cmp_lt0000_cy<4> (Mcompar_grundleY_cmp_lt0000_cy<4>)
+     MUXCY:CI->O           1   0.052   0.000  Mcompar_grundleY_cmp_lt0000_cy<5> (Mcompar_grundleY_cmp_lt0000_cy<5>)
+     MUXCY:CI->O           1   0.052   0.000  Mcompar_grundleY_cmp_lt0000_cy<6> (Mcompar_grundleY_cmp_lt0000_cy<6>)
+     MUXCY:CI->O           1   0.052   0.000  Mcompar_grundleY_cmp_lt0000_cy<7> (Mcompar_grundleY_cmp_lt0000_cy<7>)
+     MUXCY:CI->O          11   0.399   0.862  Mcompar_grundleY_cmp_lt0000_cy<8> (Mcompar_grundleY_cmp_lt0000_cy<8>)
+     LUT2:I1->O            1   0.612   0.000  Mcount_grundleY_lut<0> (Mcount_grundleY_lut<0>)
+     MUXCY:S->O            1   0.404   0.000  Mcount_grundleY_cy<0> (Mcount_grundleY_cy<0>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_grundleY_cy<1> (Mcount_grundleY_cy<1>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_grundleY_cy<2> (Mcount_grundleY_cy<2>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_grundleY_cy<3> (Mcount_grundleY_cy<3>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_grundleY_cy<4> (Mcount_grundleY_cy<4>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_grundleY_cy<5> (Mcount_grundleY_cy<5>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_grundleY_cy<6> (Mcount_grundleY_cy<6>)
+     MUXCY:CI->O           0   0.051   0.000  Mcount_grundleY_cy<7> (Mcount_grundleY_cy<7>)
+     XORCY:CI->O           1   0.699   0.000  Mcount_grundleY_xor<8> (Result<8>)
+     FDRE:D                    0.268          grundleY_8
+    ----------------------------------------
+    Total                      6.640ns (4.633ns logic, 2.006ns route)
+                                       (69.8% logic, 30.2% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_50MHz'
@@ -630,19 +898,19 @@ Delay:               2.131ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'turn1'
-  Total number of paths / destination ports: 211 / 63
+  Total number of paths / destination ports: 184 / 65
 -------------------------------------------------------------------------
-Offset:              5.422ns (Levels of Logic = 12)
-  Source:            BUTTON<1> (PAD)
+Offset:              5.437ns (Levels of Logic = 12)
+  Source:            BUTTON<2> (PAD)
   Destination:       playerPosY_8 (FF)
   Destination Clock: turn1 rising
 
-  Data Path: BUTTON<1> to playerPosY_8
+  Data Path: BUTTON<2> to playerPosY_8
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            12   1.106   0.847  BUTTON_1_IBUF (BUTTON_1_IBUF)
-     LUT3:I2->O            1   0.612   0.357  playerPosY_mux00022 (playerPosY_mux0002)
+     IBUF:I->O            11   1.106   0.862  BUTTON_2_IBUF (BUTTON_2_IBUF)
+     LUT4:I1->O            1   0.612   0.357  playerPosY_mux00022 (playerPosY_mux0002)
      MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosY_share0000_cy<0> (Maddsub_playerPosY_share0000_cy<0>)
      MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosY_share0000_cy<1> (Maddsub_playerPosY_share0000_cy<1>)
      MUXCY:CI->O           1   0.052   0.000  Maddsub_playerPosY_share0000_cy<2> (Maddsub_playerPosY_share0000_cy<2>)
@@ -655,12 +923,12 @@ Offset:              5.422ns (Levels of Logic = 12)
      LUT4:I0->O            1   0.612   0.000  playerPosY_mux0000<8>1 (playerPosY_mux0000<8>)
      FDRE:D                    0.268          playerPosY_8
     ----------------------------------------
-    Total                      5.422ns (3.709ns logic, 1.713ns route)
-                                       (68.4% logic, 31.6% route)
+    Total                      5.437ns (3.709ns logic, 1.728ns route)
+                                       (68.2% logic, 31.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'vga/clk_div/clk_out1'
-  Total number of paths / destination ports: 55 / 44
+  Total number of paths / destination ports: 63 / 52
 -------------------------------------------------------------------------
 Offset:              5.012ns (Levels of Logic = 3)
   Source:            SWITCH<3> (PAD)
@@ -671,45 +939,45 @@ Offset:              5.012ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            36   1.106   1.104  SWITCH_3_IBUF (SWITCH_3_IBUF)
-     LUT3:I2->O            1   0.612   0.426  vga/HS_not0001_SW0 (N17)
+     IBUF:I->O            38   1.106   1.104  SWITCH_3_IBUF (SWITCH_3_IBUF)
+     LUT3:I2->O            1   0.612   0.426  vga/HS_not0001_SW0 (N6)
      LUT4:I1->O            1   0.612   0.357  vga/HS_not0001 (vga/HS_not0001)
      FDR:R                     0.795          vga/HS
     ----------------------------------------
     Total                      5.012ns (3.125ns logic, 1.887ns route)
-                                       (62.4% logic, 37.6% route)
+                                       (62.3% logic, 37.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'vga/clk_div/clk_out1'
-  Total number of paths / destination ports: 18 / 10
+  Total number of paths / destination ports: 16 / 9
 -------------------------------------------------------------------------
-Offset:              5.445ns (Levels of Logic = 2)
+Offset:              5.313ns (Levels of Logic = 2)
   Source:            vga/Blank (FF)
-  Destination:       GREEN<2> (PAD)
+  Destination:       RED<2> (PAD)
   Source Clock:      vga/clk_div/clk_out1 rising
 
-  Data Path: vga/Blank to GREEN<2>
+  Data Path: vga/Blank to RED<2>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              4   0.514   0.651  vga/Blank (vga/Blank)
-     LUT2:I0->O            4   0.612   0.499  vga/RED<2>1 (GREEN_0_OBUF)
-     OBUF:I->O                 3.169          GREEN_0_OBUF (GREEN<0>)
+     FDR:C->Q              6   0.514   0.638  vga/Blank (vga/Blank)
+     LUT2:I1->O            2   0.612   0.380  vga/RED<2>1 (RED_0_OBUF)
+     OBUF:I->O                 3.169          RED_0_OBUF (RED<0>)
     ----------------------------------------
-    Total                      5.445ns (4.295ns logic, 1.150ns route)
-                                       (78.9% logic, 21.1% route)
+    Total                      5.313ns (4.295ns logic, 1.018ns route)
+                                       (80.8% logic, 19.2% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 6.76 secs
+Total REAL time to Xst completion: 11.00 secs
+Total CPU time to Xst completion: 11.09 secs
  
 --> 
 
-Total memory usage is 266748 kilobytes
+Total memory usage is 284796 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    2 (   0 filtered)
+Number of warnings :   44 (   0 filtered)
 Number of infos    :   10 (   0 filtered)
 

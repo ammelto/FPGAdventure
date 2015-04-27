@@ -33,7 +33,7 @@ INFO:Timing:3389 - This architecture does not support 'Discrete Jitter' and
    Error.
 
 ================================================================================
-Timing constraint: TS_CLK_50MHz = PERIOD TIMEGRP "CLK_50MHz" 50 MHz HIGH 50%;
+Timing constraint: TS_CLK_50MHz = PERIOD TIMEGRP "CLK_50MHz" 25 MHz HIGH 50%;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
  0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
@@ -41,32 +41,32 @@ For more information, see Period Analysis in the Timing Closure User Guide (UG61
  Minimum period is   1.388ns.
 --------------------------------------------------------------------------------
 
-Component Switching Limit Checks: TS_CLK_50MHz = PERIOD TIMEGRP "CLK_50MHz" 50 MHz HIGH 50%;
+Component Switching Limit Checks: TS_CLK_50MHz = PERIOD TIMEGRP "CLK_50MHz" 25 MHz HIGH 50%;
 --------------------------------------------------------------------------------
-Slack: 18.612ns (period - (min low pulse limit / (low pulse / period)))
-  Period: 20.000ns
-  Low pulse: 10.000ns
+Slack: 38.612ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 40.000ns
+  Low pulse: 20.000ns
   Low pulse limit: 0.694ns (Tcl)
   Physical resource: vga/clk_div/clk_out1/CLK
   Logical resource: vga/clk_div/clk_out/CK
-  Location pin: SLICE_X15Y17.CLK
+  Location pin: SLICE_X15Y8.CLK
   Clock network: clk_50MHz_BUFGP
 --------------------------------------------------------------------------------
-Slack: 18.612ns (period - (min high pulse limit / (high pulse / period)))
-  Period: 20.000ns
-  High pulse: 10.000ns
+Slack: 38.612ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 40.000ns
+  High pulse: 20.000ns
   High pulse limit: 0.694ns (Tch)
   Physical resource: vga/clk_div/clk_out1/CLK
   Logical resource: vga/clk_div/clk_out/CK
-  Location pin: SLICE_X15Y17.CLK
+  Location pin: SLICE_X15Y8.CLK
   Clock network: clk_50MHz_BUFGP
 --------------------------------------------------------------------------------
-Slack: 18.612ns (period - min period limit)
-  Period: 20.000ns
+Slack: 38.612ns (period - min period limit)
+  Period: 40.000ns
   Min period limit: 1.388ns (720.461MHz) (Tcp)
   Physical resource: vga/clk_div/clk_out1/CLK
   Logical resource: vga/clk_div/clk_out/CK
-  Location pin: SLICE_X15Y17.CLK
+  Location pin: SLICE_X15Y8.CLK
   Clock network: clk_50MHz_BUFGP
 --------------------------------------------------------------------------------
 
@@ -75,474 +75,581 @@ Timing constraint: TS_CLK_25MHz = PERIOD TIMEGRP "vga/clk_div/clk_out1" 25 MHz
 HIGH 50%;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
- 1796 paths analyzed, 255 endpoints analyzed, 0 failing endpoints
+ 19054 paths analyzed, 321 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is  12.864ns.
+ Minimum period is  26.010ns.
 --------------------------------------------------------------------------------
 
-Paths for end point collision (SLICE_X18Y23.CE), 78 paths
+Paths for end point collision (SLICE_X26Y31.CE), 2376 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     13.568ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               vga/CurrentX_0 (FF)
+Slack (setup path):     6.995ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               vga/CurrentY_0_1 (FF)
   Destination:          collision (FF)
   Requirement:          20.000ns
-  Data Path Delay:      6.432ns (Levels of Logic = 7)
-  Clock Path Skew:      0.000ns
+  Data Path Delay:      13.002ns (Levels of Logic = 10)
+  Clock Path Skew:      -0.003ns (0.024 - 0.027)
   Source Clock:         vga/clk_div/clk_out rising at 0.000ns
   Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
   Clock Uncertainty:    0.000ns
 
-  Maximum Data Path: vga/CurrentX_0 to collision
+  Maximum Data Path: vga/CurrentY_0_1 to collision
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X27Y11.YQ      Tcko                  0.511   vga/CurrentX<1>
-                                                       vga/CurrentX_0
-    SLICE_X29Y21.F1      net (fanout=2)        1.360   vga/CurrentX<0>
-    SLICE_X29Y21.COUT    Topcyf                1.011   Mcompar_color_cmp_lt0003_cy<1>
-                                                       Mcompar_color_cmp_lt0003_lut<0>
-                                                       Mcompar_color_cmp_lt0003_cy<0>
-                                                       Mcompar_color_cmp_lt0003_cy<1>
-    SLICE_X29Y22.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0003_cy<1>
-    SLICE_X29Y22.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0003_cy<3>
-                                                       Mcompar_color_cmp_lt0003_cy<2>
-                                                       Mcompar_color_cmp_lt0003_cy<3>
-    SLICE_X29Y23.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0003_cy<3>
-    SLICE_X29Y23.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0003_cy<5>
-                                                       Mcompar_color_cmp_lt0003_cy<4>
-                                                       Mcompar_color_cmp_lt0003_cy<5>
-    SLICE_X29Y24.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0003_cy<5>
-    SLICE_X29Y24.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0003_cy<7>
-                                                       Mcompar_color_cmp_lt0003_cy<6>
-                                                       Mcompar_color_cmp_lt0003_cy<7>
-    SLICE_X29Y25.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0003_cy<7>
-    SLICE_X29Y25.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0003_cy<9>
-                                                       Mcompar_color_cmp_lt0003_cy<8>
-                                                       Mcompar_color_cmp_lt0003_cy<9>
-    SLICE_X29Y26.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0003_cy<9>
-    SLICE_X29Y26.XB      Tcinxb                0.352   Mcompar_color_cmp_lt0003_cy<10>
-                                                       Mcompar_color_cmp_lt0003_cy<10>
-    SLICE_X20Y23.F2      net (fanout=5)        1.145   Mcompar_color_cmp_lt0003_cy<10>
-    SLICE_X20Y23.X       Tilo                  0.660   collision_not0001
-                                                       collision_not00012
-    SLICE_X18Y23.CE      net (fanout=1)        0.498   collision_not0001
-    SLICE_X18Y23.CLK     Tceck                 0.483   collision
+    SLICE_X28Y8.YQ       Tcko                  0.567   vga/CurrentY_0_1
+                                                       vga/CurrentY_0_1
+    SLICE_X1Y12.F1       net (fanout=34)       2.794   vga/CurrentY_0_1
+    SLICE_X1Y12.COUT     Topcyf                1.011   Mcompar_color_cmp_ge0008_cy<1>
+                                                       Mcompar_color_cmp_ge0008_lut<0>
+                                                       Mcompar_color_cmp_ge0008_cy<0>
+                                                       Mcompar_color_cmp_ge0008_cy<1>
+    SLICE_X1Y13.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<1>
+    SLICE_X1Y13.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<3>
+                                                       Mcompar_color_cmp_ge0008_cy<2>
+                                                       Mcompar_color_cmp_ge0008_cy<3>
+    SLICE_X1Y14.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<3>
+    SLICE_X1Y14.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<5>
+                                                       Mcompar_color_cmp_ge0008_cy<4>
+                                                       Mcompar_color_cmp_ge0008_cy<5>
+    SLICE_X1Y15.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<5>
+    SLICE_X1Y15.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<7>
+                                                       Mcompar_color_cmp_ge0008_cy<6>
+                                                       Mcompar_color_cmp_ge0008_cy<7>
+    SLICE_X1Y16.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<7>
+    SLICE_X1Y16.COUT     Tbyp                  0.103   color_cmp_ge0008
+                                                       Mcompar_color_cmp_ge0008_cy<8>
+                                                       Mcompar_color_cmp_ge0008_cy<9>
+    SLICE_X16Y17.F1      net (fanout=3)        1.588   color_cmp_ge0008
+    SLICE_X16Y17.X       Tilo                  0.660   color_and0000183
+                                                       color_and0000183
+    SLICE_X19Y18.F1      net (fanout=1)        0.673   color_and0000183
+    SLICE_X19Y18.X       Tilo                  0.612   color_and0000196
+                                                       color_and0000196
+    SLICE_X22Y20.F2      net (fanout=1)        0.573   color_and0000196
+    SLICE_X22Y20.X       Tilo                  0.660   color_and0000216
+                                                       color_and0000216
+    SLICE_X22Y22.F3      net (fanout=1)        0.273   color_and0000216
+    SLICE_X22Y22.X       Tilo                  0.660   color_and0000
+                                                       color_and0000242
+    SLICE_X27Y31.F2      net (fanout=7)        0.919   color_and0000
+    SLICE_X27Y31.X       Tilo                  0.612   collision_not0001
+                                                       collision_not00011
+    SLICE_X26Y31.CE      net (fanout=1)        0.505   collision_not0001
+    SLICE_X26Y31.CLK     Tceck                 0.483   collision
                                                        collision
     -------------------------------------------------  ---------------------------
-    Total                                      6.432ns (3.429ns logic, 3.003ns route)
-                                                       (53.3% logic, 46.7% route)
+    Total                                     13.002ns (5.677ns logic, 7.325ns route)
+                                                       (43.7% logic, 56.3% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     13.749ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               vga/CurrentX_0 (FF)
+Slack (setup path):     7.176ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               vga/CurrentY_0_1 (FF)
   Destination:          collision (FF)
   Requirement:          20.000ns
-  Data Path Delay:      6.251ns (Levels of Logic = 7)
-  Clock Path Skew:      0.000ns
+  Data Path Delay:      12.821ns (Levels of Logic = 10)
+  Clock Path Skew:      -0.003ns (0.024 - 0.027)
   Source Clock:         vga/clk_div/clk_out rising at 0.000ns
   Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
   Clock Uncertainty:    0.000ns
 
-  Maximum Data Path: vga/CurrentX_0 to collision
+  Maximum Data Path: vga/CurrentY_0_1 to collision
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X27Y11.YQ      Tcko                  0.511   vga/CurrentX<1>
-                                                       vga/CurrentX_0
-    SLICE_X29Y21.F1      net (fanout=2)        1.360   vga/CurrentX<0>
-    SLICE_X29Y21.COUT    Topcyf                0.830   Mcompar_color_cmp_lt0003_cy<1>
-                                                       Mcompar_color_cmp_lt0003_cy<0>
-                                                       Mcompar_color_cmp_lt0003_cy<1>
-    SLICE_X29Y22.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0003_cy<1>
-    SLICE_X29Y22.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0003_cy<3>
-                                                       Mcompar_color_cmp_lt0003_cy<2>
-                                                       Mcompar_color_cmp_lt0003_cy<3>
-    SLICE_X29Y23.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0003_cy<3>
-    SLICE_X29Y23.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0003_cy<5>
-                                                       Mcompar_color_cmp_lt0003_cy<4>
-                                                       Mcompar_color_cmp_lt0003_cy<5>
-    SLICE_X29Y24.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0003_cy<5>
-    SLICE_X29Y24.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0003_cy<7>
-                                                       Mcompar_color_cmp_lt0003_cy<6>
-                                                       Mcompar_color_cmp_lt0003_cy<7>
-    SLICE_X29Y25.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0003_cy<7>
-    SLICE_X29Y25.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0003_cy<9>
-                                                       Mcompar_color_cmp_lt0003_cy<8>
-                                                       Mcompar_color_cmp_lt0003_cy<9>
-    SLICE_X29Y26.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0003_cy<9>
-    SLICE_X29Y26.XB      Tcinxb                0.352   Mcompar_color_cmp_lt0003_cy<10>
-                                                       Mcompar_color_cmp_lt0003_cy<10>
-    SLICE_X20Y23.F2      net (fanout=5)        1.145   Mcompar_color_cmp_lt0003_cy<10>
-    SLICE_X20Y23.X       Tilo                  0.660   collision_not0001
-                                                       collision_not00012
-    SLICE_X18Y23.CE      net (fanout=1)        0.498   collision_not0001
-    SLICE_X18Y23.CLK     Tceck                 0.483   collision
+    SLICE_X28Y8.YQ       Tcko                  0.567   vga/CurrentY_0_1
+                                                       vga/CurrentY_0_1
+    SLICE_X1Y12.F1       net (fanout=34)       2.794   vga/CurrentY_0_1
+    SLICE_X1Y12.COUT     Topcyf                0.830   Mcompar_color_cmp_ge0008_cy<1>
+                                                       Mcompar_color_cmp_ge0008_cy<0>
+                                                       Mcompar_color_cmp_ge0008_cy<1>
+    SLICE_X1Y13.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<1>
+    SLICE_X1Y13.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<3>
+                                                       Mcompar_color_cmp_ge0008_cy<2>
+                                                       Mcompar_color_cmp_ge0008_cy<3>
+    SLICE_X1Y14.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<3>
+    SLICE_X1Y14.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<5>
+                                                       Mcompar_color_cmp_ge0008_cy<4>
+                                                       Mcompar_color_cmp_ge0008_cy<5>
+    SLICE_X1Y15.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<5>
+    SLICE_X1Y15.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<7>
+                                                       Mcompar_color_cmp_ge0008_cy<6>
+                                                       Mcompar_color_cmp_ge0008_cy<7>
+    SLICE_X1Y16.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<7>
+    SLICE_X1Y16.COUT     Tbyp                  0.103   color_cmp_ge0008
+                                                       Mcompar_color_cmp_ge0008_cy<8>
+                                                       Mcompar_color_cmp_ge0008_cy<9>
+    SLICE_X16Y17.F1      net (fanout=3)        1.588   color_cmp_ge0008
+    SLICE_X16Y17.X       Tilo                  0.660   color_and0000183
+                                                       color_and0000183
+    SLICE_X19Y18.F1      net (fanout=1)        0.673   color_and0000183
+    SLICE_X19Y18.X       Tilo                  0.612   color_and0000196
+                                                       color_and0000196
+    SLICE_X22Y20.F2      net (fanout=1)        0.573   color_and0000196
+    SLICE_X22Y20.X       Tilo                  0.660   color_and0000216
+                                                       color_and0000216
+    SLICE_X22Y22.F3      net (fanout=1)        0.273   color_and0000216
+    SLICE_X22Y22.X       Tilo                  0.660   color_and0000
+                                                       color_and0000242
+    SLICE_X27Y31.F2      net (fanout=7)        0.919   color_and0000
+    SLICE_X27Y31.X       Tilo                  0.612   collision_not0001
+                                                       collision_not00011
+    SLICE_X26Y31.CE      net (fanout=1)        0.505   collision_not0001
+    SLICE_X26Y31.CLK     Tceck                 0.483   collision
                                                        collision
     -------------------------------------------------  ---------------------------
-    Total                                      6.251ns (3.248ns logic, 3.003ns route)
-                                                       (52.0% logic, 48.0% route)
+    Total                                     12.821ns (5.496ns logic, 7.325ns route)
+                                                       (42.9% logic, 57.1% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     13.819ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               vga/CurrentX_8 (FF)
-  Destination:          collision (FF)
-  Requirement:          20.000ns
-  Data Path Delay:      6.181ns (Levels of Logic = 3)
-  Clock Path Skew:      0.000ns
-  Source Clock:         vga/clk_div/clk_out rising at 0.000ns
-  Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
-  Clock Uncertainty:    0.000ns
-
-  Maximum Data Path: vga/CurrentX_8 to collision
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X25Y11.XQ      Tcko                  0.514   vga/CurrentX<8>
-                                                       vga/CurrentX_8
-    SLICE_X29Y25.F1      net (fanout=5)        1.518   vga/CurrentX<8>
-    SLICE_X29Y25.COUT    Topcyf                1.011   Mcompar_color_cmp_lt0003_cy<9>
-                                                       Mcompar_color_cmp_lt0003_lut<8>
-                                                       Mcompar_color_cmp_lt0003_cy<8>
-                                                       Mcompar_color_cmp_lt0003_cy<9>
-    SLICE_X29Y26.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0003_cy<9>
-    SLICE_X29Y26.XB      Tcinxb                0.352   Mcompar_color_cmp_lt0003_cy<10>
-                                                       Mcompar_color_cmp_lt0003_cy<10>
-    SLICE_X20Y23.F2      net (fanout=5)        1.145   Mcompar_color_cmp_lt0003_cy<10>
-    SLICE_X20Y23.X       Tilo                  0.660   collision_not0001
-                                                       collision_not00012
-    SLICE_X18Y23.CE      net (fanout=1)        0.498   collision_not0001
-    SLICE_X18Y23.CLK     Tceck                 0.483   collision
-                                                       collision
-    -------------------------------------------------  ---------------------------
-    Total                                      6.181ns (3.020ns logic, 3.161ns route)
-                                                       (48.9% logic, 51.1% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point color_2 (SLICE_X20Y24.F1), 37 paths
---------------------------------------------------------------------------------
-Slack (setup path):     13.707ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               vga/CurrentY_1 (FF)
-  Destination:          color_2 (FF)
-  Requirement:          20.000ns
-  Data Path Delay:      6.292ns (Levels of Logic = 7)
-  Clock Path Skew:      -0.001ns (0.037 - 0.038)
-  Source Clock:         vga/clk_div/clk_out rising at 0.000ns
-  Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
-  Clock Uncertainty:    0.000ns
-
-  Maximum Data Path: vga/CurrentY_1 to color_2
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X12Y12.XQ      Tcko                  0.515   vga/CurrentY<1>
-                                                       vga/CurrentY_1
-    SLICE_X13Y20.G1      net (fanout=2)        1.402   vga/CurrentY<1>
-    SLICE_X13Y20.COUT    Topcyg                0.871   Mcompar_color_cmp_lt0002_cy<1>
-                                                       Mcompar_color_cmp_lt0002_lut<1>
-                                                       Mcompar_color_cmp_lt0002_cy<1>
-    SLICE_X13Y21.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0002_cy<1>
-    SLICE_X13Y21.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0002_cy<3>
-                                                       Mcompar_color_cmp_lt0002_cy<2>
-                                                       Mcompar_color_cmp_lt0002_cy<3>
-    SLICE_X13Y22.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0002_cy<3>
-    SLICE_X13Y22.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0002_cy<5>
-                                                       Mcompar_color_cmp_lt0002_cy<4>
-                                                       Mcompar_color_cmp_lt0002_cy<5>
-    SLICE_X13Y23.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0002_cy<5>
-    SLICE_X13Y23.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0002_cy<7>
-                                                       Mcompar_color_cmp_lt0002_cy<6>
-                                                       Mcompar_color_cmp_lt0002_cy<7>
-    SLICE_X13Y24.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0002_cy<7>
-    SLICE_X13Y24.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0002_cy<9>
-                                                       Mcompar_color_cmp_lt0002_cy<8>
-                                                       Mcompar_color_cmp_lt0002_cy<9>
-    SLICE_X20Y24.G4      net (fanout=5)        1.275   Mcompar_color_cmp_lt0002_cy<9>
-    SLICE_X20Y24.Y       Tilo                  0.660   color<2>
-                                                       collision_not000111_SW1
-    SLICE_X20Y24.F1      net (fanout=1)        0.381   collision_not000111_SW1/O
-    SLICE_X20Y24.CLK     Tfck                  0.776   color<2>
-                                                       color_mux0000<7>1
-                                                       color_2
-    -------------------------------------------------  ---------------------------
-    Total                                      6.292ns (3.234ns logic, 3.058ns route)
-                                                       (51.4% logic, 48.6% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     13.744ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               vga/CurrentY_0 (FF)
-  Destination:          color_2 (FF)
-  Requirement:          20.000ns
-  Data Path Delay:      6.255ns (Levels of Logic = 7)
-  Clock Path Skew:      -0.001ns (0.037 - 0.038)
-  Source Clock:         vga/clk_div/clk_out rising at 0.000ns
-  Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
-  Clock Uncertainty:    0.000ns
-
-  Maximum Data Path: vga/CurrentY_0 to color_2
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X12Y12.YQ      Tcko                  0.567   vga/CurrentY<1>
-                                                       vga/CurrentY_0
-    SLICE_X13Y20.F1      net (fanout=2)        1.173   vga/CurrentY<0>
-    SLICE_X13Y20.COUT    Topcyf                1.011   Mcompar_color_cmp_lt0002_cy<1>
-                                                       Mcompar_color_cmp_lt0002_lut<0>
-                                                       Mcompar_color_cmp_lt0002_cy<0>
-                                                       Mcompar_color_cmp_lt0002_cy<1>
-    SLICE_X13Y21.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0002_cy<1>
-    SLICE_X13Y21.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0002_cy<3>
-                                                       Mcompar_color_cmp_lt0002_cy<2>
-                                                       Mcompar_color_cmp_lt0002_cy<3>
-    SLICE_X13Y22.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0002_cy<3>
-    SLICE_X13Y22.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0002_cy<5>
-                                                       Mcompar_color_cmp_lt0002_cy<4>
-                                                       Mcompar_color_cmp_lt0002_cy<5>
-    SLICE_X13Y23.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0002_cy<5>
-    SLICE_X13Y23.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0002_cy<7>
-                                                       Mcompar_color_cmp_lt0002_cy<6>
-                                                       Mcompar_color_cmp_lt0002_cy<7>
-    SLICE_X13Y24.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0002_cy<7>
-    SLICE_X13Y24.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0002_cy<9>
-                                                       Mcompar_color_cmp_lt0002_cy<8>
-                                                       Mcompar_color_cmp_lt0002_cy<9>
-    SLICE_X20Y24.G4      net (fanout=5)        1.275   Mcompar_color_cmp_lt0002_cy<9>
-    SLICE_X20Y24.Y       Tilo                  0.660   color<2>
-                                                       collision_not000111_SW1
-    SLICE_X20Y24.F1      net (fanout=1)        0.381   collision_not000111_SW1/O
-    SLICE_X20Y24.CLK     Tfck                  0.776   color<2>
-                                                       color_mux0000<7>1
-                                                       color_2
-    -------------------------------------------------  ---------------------------
-    Total                                      6.255ns (3.426ns logic, 2.829ns route)
-                                                       (54.8% logic, 45.2% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     13.801ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               vga/CurrentY_6 (FF)
-  Destination:          color_2 (FF)
-  Requirement:          20.000ns
-  Data Path Delay:      6.198ns (Levels of Logic = 4)
-  Clock Path Skew:      -0.001ns (0.037 - 0.038)
-  Source Clock:         vga/clk_div/clk_out rising at 0.000ns
-  Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
-  Clock Uncertainty:    0.000ns
-
-  Maximum Data Path: vga/CurrentY_6 to color_2
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X13Y13.YQ      Tcko                  0.511   vga/CurrentY<7>
-                                                       vga/CurrentY_6
-    SLICE_X13Y23.F2      net (fanout=4)        1.481   vga/CurrentY<6>
-    SLICE_X13Y23.COUT    Topcyf                1.011   Mcompar_color_cmp_lt0002_cy<7>
-                                                       Mcompar_color_cmp_lt0002_lut<6>
-                                                       Mcompar_color_cmp_lt0002_cy<6>
-                                                       Mcompar_color_cmp_lt0002_cy<7>
-    SLICE_X13Y24.CIN     net (fanout=1)        0.000   Mcompar_color_cmp_lt0002_cy<7>
-    SLICE_X13Y24.COUT    Tbyp                  0.103   Mcompar_color_cmp_lt0002_cy<9>
-                                                       Mcompar_color_cmp_lt0002_cy<8>
-                                                       Mcompar_color_cmp_lt0002_cy<9>
-    SLICE_X20Y24.G4      net (fanout=5)        1.275   Mcompar_color_cmp_lt0002_cy<9>
-    SLICE_X20Y24.Y       Tilo                  0.660   color<2>
-                                                       collision_not000111_SW1
-    SLICE_X20Y24.F1      net (fanout=1)        0.381   collision_not000111_SW1/O
-    SLICE_X20Y24.CLK     Tfck                  0.776   color<2>
-                                                       color_mux0000<7>1
-                                                       color_2
-    -------------------------------------------------  ---------------------------
-    Total                                      6.198ns (3.061ns logic, 3.137ns route)
-                                                       (49.4% logic, 50.6% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point map/StartCastle/mColor_3 (SLICE_X18Y18.F2), 20 paths
---------------------------------------------------------------------------------
-Slack (setup path):     13.879ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               vga/CurrentY_8 (FF)
-  Destination:          map/StartCastle/mColor_3 (FF)
-  Requirement:          20.000ns
-  Data Path Delay:      6.121ns (Levels of Logic = 4)
-  Clock Path Skew:      0.000ns
-  Source Clock:         vga/clk_div/clk_out rising at 0.000ns
-  Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
-  Clock Uncertainty:    0.000ns
-
-  Maximum Data Path: vga/CurrentY_8 to map/StartCastle/mColor_3
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X12Y13.XQ      Tcko                  0.515   vga/CurrentY<8>
-                                                       vga/CurrentY_8
-    SLICE_X14Y15.G2      net (fanout=6)        0.849   vga/CurrentY<8>
-    SLICE_X14Y15.Y       Tilo                  0.660   map/HallwayTopLeft/mColor_cmp_lt0002
-                                                       map/HallwayTopLeft/mColor_cmp_lt00021_SW0
-    SLICE_X14Y15.F3      net (fanout=1)        0.020   map/HallwayTopLeft/mColor_cmp_lt00021_SW0/O
-    SLICE_X14Y15.X       Tilo                  0.660   map/HallwayTopLeft/mColor_cmp_lt0002
-                                                       map/HallwayTopLeft/mColor_cmp_lt00021
-    SLICE_X22Y14.F4      net (fanout=3)        0.540   map/HallwayTopLeft/mColor_cmp_lt0002
-    SLICE_X22Y14.X       Tilo                  0.660   map/StartCastle/mColor_mux0000<0>121
-                                                       map/StartCastle/mColor_mux0000<0>121
-    SLICE_X18Y18.F2      net (fanout=3)        1.441   map/StartCastle/mColor_mux0000<0>121
-    SLICE_X18Y18.CLK     Tfck                  0.776   map/StartCastle/mColor<3>
-                                                       map/StartCastle/mColor_mux0000<6>1
-                                                       map/StartCastle/mColor_3
-    -------------------------------------------------  ---------------------------
-    Total                                      6.121ns (3.271ns logic, 2.850ns route)
-                                                       (53.4% logic, 46.6% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     13.885ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     7.195ns (requirement - (data path - clock path skew + uncertainty))
   Source:               vga/CurrentY_7 (FF)
-  Destination:          map/StartCastle/mColor_3 (FF)
+  Destination:          collision (FF)
   Requirement:          20.000ns
-  Data Path Delay:      6.115ns (Levels of Logic = 4)
+  Data Path Delay:      12.805ns (Levels of Logic = 7)
   Clock Path Skew:      0.000ns
   Source Clock:         vga/clk_div/clk_out rising at 0.000ns
   Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
   Clock Uncertainty:    0.000ns
 
-  Maximum Data Path: vga/CurrentY_7 to map/StartCastle/mColor_3
+  Maximum Data Path: vga/CurrentY_7 to collision
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X13Y13.XQ      Tcko                  0.514   vga/CurrentY<7>
+    SLICE_X28Y17.XQ      Tcko                  0.515   vga/CurrentY<7>
                                                        vga/CurrentY_7
-    SLICE_X14Y15.G4      net (fanout=6)        0.844   vga/CurrentY<7>
-    SLICE_X14Y15.Y       Tilo                  0.660   map/HallwayTopLeft/mColor_cmp_lt0002
-                                                       map/HallwayTopLeft/mColor_cmp_lt00021_SW0
-    SLICE_X14Y15.F3      net (fanout=1)        0.020   map/HallwayTopLeft/mColor_cmp_lt00021_SW0/O
-    SLICE_X14Y15.X       Tilo                  0.660   map/HallwayTopLeft/mColor_cmp_lt0002
-                                                       map/HallwayTopLeft/mColor_cmp_lt00021
-    SLICE_X22Y14.F4      net (fanout=3)        0.540   map/HallwayTopLeft/mColor_cmp_lt0002
-    SLICE_X22Y14.X       Tilo                  0.660   map/StartCastle/mColor_mux0000<0>121
-                                                       map/StartCastle/mColor_mux0000<0>121
-    SLICE_X18Y18.F2      net (fanout=3)        1.441   map/StartCastle/mColor_mux0000<0>121
-    SLICE_X18Y18.CLK     Tfck                  0.776   map/StartCastle/mColor<3>
-                                                       map/StartCastle/mColor_mux0000<6>1
-                                                       map/StartCastle/mColor_3
+    SLICE_X3Y3.G3        net (fanout=41)       2.903   vga/CurrentY<7>
+    SLICE_X3Y3.COUT      Topcyg                0.871   Mcompar_color_cmp_le0000_cy<7>
+                                                       Mcompar_color_cmp_le0000_lut<7>
+                                                       Mcompar_color_cmp_le0000_cy<7>
+    SLICE_X3Y4.CIN       net (fanout=1)        0.000   Mcompar_color_cmp_le0000_cy<7>
+    SLICE_X3Y4.COUT      Tbyp                  0.103   color_cmp_le0000
+                                                       Mcompar_color_cmp_le0000_cy<8>
+                                                       Mcompar_color_cmp_le0000_cy<9>
+    SLICE_X19Y21.G1      net (fanout=4)        2.222   color_cmp_le0000
+    SLICE_X19Y21.Y       Tilo                  0.612   color_and000012
+                                                       color_and00011
+    SLICE_X19Y21.F4      net (fanout=1)        0.020   color_and00011/O
+    SLICE_X19Y21.X       Tilo                  0.612   color_and000012
+                                                       color_and000012
+    SLICE_X22Y18.F3      net (fanout=1)        0.785   color_and000012
+    SLICE_X22Y18.X       Tilo                  0.660   color_and0000120
+                                                       color_and0000120
+    SLICE_X22Y22.F1      net (fanout=1)        0.323   color_and0000120
+    SLICE_X22Y22.X       Tilo                  0.660   color_and0000
+                                                       color_and0000242
+    SLICE_X27Y31.F2      net (fanout=7)        0.919   color_and0000
+    SLICE_X27Y31.X       Tilo                  0.612   collision_not0001
+                                                       collision_not00011
+    SLICE_X26Y31.CE      net (fanout=1)        0.505   collision_not0001
+    SLICE_X26Y31.CLK     Tceck                 0.483   collision
+                                                       collision
     -------------------------------------------------  ---------------------------
-    Total                                      6.115ns (3.270ns logic, 2.845ns route)
-                                                       (53.5% logic, 46.5% route)
+    Total                                     12.805ns (5.128ns logic, 7.677ns route)
+                                                       (40.0% logic, 60.0% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     14.034ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               vga/CurrentY_6 (FF)
-  Destination:          map/StartCastle/mColor_3 (FF)
+
+Paths for end point color_2 (SLICE_X27Y29.BY), 1203 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     7.405ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               vga/CurrentY_0_1 (FF)
+  Destination:          color_2 (FF)
   Requirement:          20.000ns
-  Data Path Delay:      5.966ns (Levels of Logic = 4)
+  Data Path Delay:      12.590ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.005ns (0.022 - 0.027)
+  Source Clock:         vga/clk_div/clk_out rising at 0.000ns
+  Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: vga/CurrentY_0_1 to color_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y8.YQ       Tcko                  0.567   vga/CurrentY_0_1
+                                                       vga/CurrentY_0_1
+    SLICE_X1Y12.F1       net (fanout=34)       2.794   vga/CurrentY_0_1
+    SLICE_X1Y12.COUT     Topcyf                1.011   Mcompar_color_cmp_ge0008_cy<1>
+                                                       Mcompar_color_cmp_ge0008_lut<0>
+                                                       Mcompar_color_cmp_ge0008_cy<0>
+                                                       Mcompar_color_cmp_ge0008_cy<1>
+    SLICE_X1Y13.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<1>
+    SLICE_X1Y13.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<3>
+                                                       Mcompar_color_cmp_ge0008_cy<2>
+                                                       Mcompar_color_cmp_ge0008_cy<3>
+    SLICE_X1Y14.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<3>
+    SLICE_X1Y14.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<5>
+                                                       Mcompar_color_cmp_ge0008_cy<4>
+                                                       Mcompar_color_cmp_ge0008_cy<5>
+    SLICE_X1Y15.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<5>
+    SLICE_X1Y15.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<7>
+                                                       Mcompar_color_cmp_ge0008_cy<6>
+                                                       Mcompar_color_cmp_ge0008_cy<7>
+    SLICE_X1Y16.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<7>
+    SLICE_X1Y16.COUT     Tbyp                  0.103   color_cmp_ge0008
+                                                       Mcompar_color_cmp_ge0008_cy<8>
+                                                       Mcompar_color_cmp_ge0008_cy<9>
+    SLICE_X16Y17.F1      net (fanout=3)        1.588   color_cmp_ge0008
+    SLICE_X16Y17.X       Tilo                  0.660   color_and0000183
+                                                       color_and0000183
+    SLICE_X19Y18.F1      net (fanout=1)        0.673   color_and0000183
+    SLICE_X19Y18.X       Tilo                  0.612   color_and0000196
+                                                       color_and0000196
+    SLICE_X22Y20.F2      net (fanout=1)        0.573   color_and0000196
+    SLICE_X22Y20.X       Tilo                  0.660   color_and0000216
+                                                       color_and0000216
+    SLICE_X22Y22.F3      net (fanout=1)        0.273   color_and0000216
+    SLICE_X22Y22.X       Tilo                  0.660   color_and0000
+                                                       color_and0000242
+    SLICE_X27Y29.BY      net (fanout=7)        1.154   color_and0000
+    SLICE_X27Y29.CLK     Tsrck                 0.953   color<2>
+                                                       color_2
+    -------------------------------------------------  ---------------------------
+    Total                                     12.590ns (5.535ns logic, 7.055ns route)
+                                                       (44.0% logic, 56.0% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.586ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               vga/CurrentY_0_1 (FF)
+  Destination:          color_2 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      12.409ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.005ns (0.022 - 0.027)
+  Source Clock:         vga/clk_div/clk_out rising at 0.000ns
+  Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: vga/CurrentY_0_1 to color_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y8.YQ       Tcko                  0.567   vga/CurrentY_0_1
+                                                       vga/CurrentY_0_1
+    SLICE_X1Y12.F1       net (fanout=34)       2.794   vga/CurrentY_0_1
+    SLICE_X1Y12.COUT     Topcyf                0.830   Mcompar_color_cmp_ge0008_cy<1>
+                                                       Mcompar_color_cmp_ge0008_cy<0>
+                                                       Mcompar_color_cmp_ge0008_cy<1>
+    SLICE_X1Y13.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<1>
+    SLICE_X1Y13.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<3>
+                                                       Mcompar_color_cmp_ge0008_cy<2>
+                                                       Mcompar_color_cmp_ge0008_cy<3>
+    SLICE_X1Y14.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<3>
+    SLICE_X1Y14.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<5>
+                                                       Mcompar_color_cmp_ge0008_cy<4>
+                                                       Mcompar_color_cmp_ge0008_cy<5>
+    SLICE_X1Y15.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<5>
+    SLICE_X1Y15.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<7>
+                                                       Mcompar_color_cmp_ge0008_cy<6>
+                                                       Mcompar_color_cmp_ge0008_cy<7>
+    SLICE_X1Y16.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<7>
+    SLICE_X1Y16.COUT     Tbyp                  0.103   color_cmp_ge0008
+                                                       Mcompar_color_cmp_ge0008_cy<8>
+                                                       Mcompar_color_cmp_ge0008_cy<9>
+    SLICE_X16Y17.F1      net (fanout=3)        1.588   color_cmp_ge0008
+    SLICE_X16Y17.X       Tilo                  0.660   color_and0000183
+                                                       color_and0000183
+    SLICE_X19Y18.F1      net (fanout=1)        0.673   color_and0000183
+    SLICE_X19Y18.X       Tilo                  0.612   color_and0000196
+                                                       color_and0000196
+    SLICE_X22Y20.F2      net (fanout=1)        0.573   color_and0000196
+    SLICE_X22Y20.X       Tilo                  0.660   color_and0000216
+                                                       color_and0000216
+    SLICE_X22Y22.F3      net (fanout=1)        0.273   color_and0000216
+    SLICE_X22Y22.X       Tilo                  0.660   color_and0000
+                                                       color_and0000242
+    SLICE_X27Y29.BY      net (fanout=7)        1.154   color_and0000
+    SLICE_X27Y29.CLK     Tsrck                 0.953   color<2>
+                                                       color_2
+    -------------------------------------------------  ---------------------------
+    Total                                     12.409ns (5.354ns logic, 7.055ns route)
+                                                       (43.1% logic, 56.9% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.607ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               vga/CurrentY_7 (FF)
+  Destination:          color_2 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      12.393ns (Levels of Logic = 6)
   Clock Path Skew:      0.000ns
   Source Clock:         vga/clk_div/clk_out rising at 0.000ns
   Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
   Clock Uncertainty:    0.000ns
 
-  Maximum Data Path: vga/CurrentY_6 to map/StartCastle/mColor_3
+  Maximum Data Path: vga/CurrentY_7 to color_2
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X13Y13.YQ      Tcko                  0.511   vga/CurrentY<7>
-                                                       vga/CurrentY_6
-    SLICE_X14Y15.G3      net (fanout=4)        0.698   vga/CurrentY<6>
-    SLICE_X14Y15.Y       Tilo                  0.660   map/HallwayTopLeft/mColor_cmp_lt0002
-                                                       map/HallwayTopLeft/mColor_cmp_lt00021_SW0
-    SLICE_X14Y15.F3      net (fanout=1)        0.020   map/HallwayTopLeft/mColor_cmp_lt00021_SW0/O
-    SLICE_X14Y15.X       Tilo                  0.660   map/HallwayTopLeft/mColor_cmp_lt0002
-                                                       map/HallwayTopLeft/mColor_cmp_lt00021
-    SLICE_X22Y14.F4      net (fanout=3)        0.540   map/HallwayTopLeft/mColor_cmp_lt0002
-    SLICE_X22Y14.X       Tilo                  0.660   map/StartCastle/mColor_mux0000<0>121
-                                                       map/StartCastle/mColor_mux0000<0>121
-    SLICE_X18Y18.F2      net (fanout=3)        1.441   map/StartCastle/mColor_mux0000<0>121
-    SLICE_X18Y18.CLK     Tfck                  0.776   map/StartCastle/mColor<3>
-                                                       map/StartCastle/mColor_mux0000<6>1
-                                                       map/StartCastle/mColor_3
+    SLICE_X28Y17.XQ      Tcko                  0.515   vga/CurrentY<7>
+                                                       vga/CurrentY_7
+    SLICE_X3Y3.G3        net (fanout=41)       2.903   vga/CurrentY<7>
+    SLICE_X3Y3.COUT      Topcyg                0.871   Mcompar_color_cmp_le0000_cy<7>
+                                                       Mcompar_color_cmp_le0000_lut<7>
+                                                       Mcompar_color_cmp_le0000_cy<7>
+    SLICE_X3Y4.CIN       net (fanout=1)        0.000   Mcompar_color_cmp_le0000_cy<7>
+    SLICE_X3Y4.COUT      Tbyp                  0.103   color_cmp_le0000
+                                                       Mcompar_color_cmp_le0000_cy<8>
+                                                       Mcompar_color_cmp_le0000_cy<9>
+    SLICE_X19Y21.G1      net (fanout=4)        2.222   color_cmp_le0000
+    SLICE_X19Y21.Y       Tilo                  0.612   color_and000012
+                                                       color_and00011
+    SLICE_X19Y21.F4      net (fanout=1)        0.020   color_and00011/O
+    SLICE_X19Y21.X       Tilo                  0.612   color_and000012
+                                                       color_and000012
+    SLICE_X22Y18.F3      net (fanout=1)        0.785   color_and000012
+    SLICE_X22Y18.X       Tilo                  0.660   color_and0000120
+                                                       color_and0000120
+    SLICE_X22Y22.F1      net (fanout=1)        0.323   color_and0000120
+    SLICE_X22Y22.X       Tilo                  0.660   color_and0000
+                                                       color_and0000242
+    SLICE_X27Y29.BY      net (fanout=7)        1.154   color_and0000
+    SLICE_X27Y29.CLK     Tsrck                 0.953   color<2>
+                                                       color_2
     -------------------------------------------------  ---------------------------
-    Total                                      5.966ns (3.267ns logic, 2.699ns route)
-                                                       (54.8% logic, 45.2% route)
+    Total                                     12.393ns (4.986ns logic, 7.407ns route)
+                                                       (40.2% logic, 59.8% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point color_3 (SLICE_X27Y30.BY), 1203 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     7.627ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               vga/CurrentY_0_1 (FF)
+  Destination:          color_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      12.370ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.003ns (0.024 - 0.027)
+  Source Clock:         vga/clk_div/clk_out rising at 0.000ns
+  Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: vga/CurrentY_0_1 to color_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y8.YQ       Tcko                  0.567   vga/CurrentY_0_1
+                                                       vga/CurrentY_0_1
+    SLICE_X1Y12.F1       net (fanout=34)       2.794   vga/CurrentY_0_1
+    SLICE_X1Y12.COUT     Topcyf                1.011   Mcompar_color_cmp_ge0008_cy<1>
+                                                       Mcompar_color_cmp_ge0008_lut<0>
+                                                       Mcompar_color_cmp_ge0008_cy<0>
+                                                       Mcompar_color_cmp_ge0008_cy<1>
+    SLICE_X1Y13.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<1>
+    SLICE_X1Y13.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<3>
+                                                       Mcompar_color_cmp_ge0008_cy<2>
+                                                       Mcompar_color_cmp_ge0008_cy<3>
+    SLICE_X1Y14.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<3>
+    SLICE_X1Y14.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<5>
+                                                       Mcompar_color_cmp_ge0008_cy<4>
+                                                       Mcompar_color_cmp_ge0008_cy<5>
+    SLICE_X1Y15.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<5>
+    SLICE_X1Y15.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<7>
+                                                       Mcompar_color_cmp_ge0008_cy<6>
+                                                       Mcompar_color_cmp_ge0008_cy<7>
+    SLICE_X1Y16.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<7>
+    SLICE_X1Y16.COUT     Tbyp                  0.103   color_cmp_ge0008
+                                                       Mcompar_color_cmp_ge0008_cy<8>
+                                                       Mcompar_color_cmp_ge0008_cy<9>
+    SLICE_X16Y17.F1      net (fanout=3)        1.588   color_cmp_ge0008
+    SLICE_X16Y17.X       Tilo                  0.660   color_and0000183
+                                                       color_and0000183
+    SLICE_X19Y18.F1      net (fanout=1)        0.673   color_and0000183
+    SLICE_X19Y18.X       Tilo                  0.612   color_and0000196
+                                                       color_and0000196
+    SLICE_X22Y20.F2      net (fanout=1)        0.573   color_and0000196
+    SLICE_X22Y20.X       Tilo                  0.660   color_and0000216
+                                                       color_and0000216
+    SLICE_X22Y22.F3      net (fanout=1)        0.273   color_and0000216
+    SLICE_X22Y22.X       Tilo                  0.660   color_and0000
+                                                       color_and0000242
+    SLICE_X27Y30.BY      net (fanout=7)        0.934   color_and0000
+    SLICE_X27Y30.CLK     Tsrck                 0.953   color<3>
+                                                       color_3
+    -------------------------------------------------  ---------------------------
+    Total                                     12.370ns (5.535ns logic, 6.835ns route)
+                                                       (44.7% logic, 55.3% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.808ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               vga/CurrentY_0_1 (FF)
+  Destination:          color_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      12.189ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.003ns (0.024 - 0.027)
+  Source Clock:         vga/clk_div/clk_out rising at 0.000ns
+  Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: vga/CurrentY_0_1 to color_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y8.YQ       Tcko                  0.567   vga/CurrentY_0_1
+                                                       vga/CurrentY_0_1
+    SLICE_X1Y12.F1       net (fanout=34)       2.794   vga/CurrentY_0_1
+    SLICE_X1Y12.COUT     Topcyf                0.830   Mcompar_color_cmp_ge0008_cy<1>
+                                                       Mcompar_color_cmp_ge0008_cy<0>
+                                                       Mcompar_color_cmp_ge0008_cy<1>
+    SLICE_X1Y13.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<1>
+    SLICE_X1Y13.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<3>
+                                                       Mcompar_color_cmp_ge0008_cy<2>
+                                                       Mcompar_color_cmp_ge0008_cy<3>
+    SLICE_X1Y14.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<3>
+    SLICE_X1Y14.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<5>
+                                                       Mcompar_color_cmp_ge0008_cy<4>
+                                                       Mcompar_color_cmp_ge0008_cy<5>
+    SLICE_X1Y15.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<5>
+    SLICE_X1Y15.COUT     Tbyp                  0.103   Mcompar_color_cmp_ge0008_cy<7>
+                                                       Mcompar_color_cmp_ge0008_cy<6>
+                                                       Mcompar_color_cmp_ge0008_cy<7>
+    SLICE_X1Y16.CIN      net (fanout=1)        0.000   Mcompar_color_cmp_ge0008_cy<7>
+    SLICE_X1Y16.COUT     Tbyp                  0.103   color_cmp_ge0008
+                                                       Mcompar_color_cmp_ge0008_cy<8>
+                                                       Mcompar_color_cmp_ge0008_cy<9>
+    SLICE_X16Y17.F1      net (fanout=3)        1.588   color_cmp_ge0008
+    SLICE_X16Y17.X       Tilo                  0.660   color_and0000183
+                                                       color_and0000183
+    SLICE_X19Y18.F1      net (fanout=1)        0.673   color_and0000183
+    SLICE_X19Y18.X       Tilo                  0.612   color_and0000196
+                                                       color_and0000196
+    SLICE_X22Y20.F2      net (fanout=1)        0.573   color_and0000196
+    SLICE_X22Y20.X       Tilo                  0.660   color_and0000216
+                                                       color_and0000216
+    SLICE_X22Y22.F3      net (fanout=1)        0.273   color_and0000216
+    SLICE_X22Y22.X       Tilo                  0.660   color_and0000
+                                                       color_and0000242
+    SLICE_X27Y30.BY      net (fanout=7)        0.934   color_and0000
+    SLICE_X27Y30.CLK     Tsrck                 0.953   color<3>
+                                                       color_3
+    -------------------------------------------------  ---------------------------
+    Total                                     12.189ns (5.354ns logic, 6.835ns route)
+                                                       (43.9% logic, 56.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.827ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               vga/CurrentY_7 (FF)
+  Destination:          color_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      12.173ns (Levels of Logic = 6)
+  Clock Path Skew:      0.000ns
+  Source Clock:         vga/clk_div/clk_out rising at 0.000ns
+  Destination Clock:    vga/clk_div/clk_out falling at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: vga/CurrentY_7 to color_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X28Y17.XQ      Tcko                  0.515   vga/CurrentY<7>
+                                                       vga/CurrentY_7
+    SLICE_X3Y3.G3        net (fanout=41)       2.903   vga/CurrentY<7>
+    SLICE_X3Y3.COUT      Topcyg                0.871   Mcompar_color_cmp_le0000_cy<7>
+                                                       Mcompar_color_cmp_le0000_lut<7>
+                                                       Mcompar_color_cmp_le0000_cy<7>
+    SLICE_X3Y4.CIN       net (fanout=1)        0.000   Mcompar_color_cmp_le0000_cy<7>
+    SLICE_X3Y4.COUT      Tbyp                  0.103   color_cmp_le0000
+                                                       Mcompar_color_cmp_le0000_cy<8>
+                                                       Mcompar_color_cmp_le0000_cy<9>
+    SLICE_X19Y21.G1      net (fanout=4)        2.222   color_cmp_le0000
+    SLICE_X19Y21.Y       Tilo                  0.612   color_and000012
+                                                       color_and00011
+    SLICE_X19Y21.F4      net (fanout=1)        0.020   color_and00011/O
+    SLICE_X19Y21.X       Tilo                  0.612   color_and000012
+                                                       color_and000012
+    SLICE_X22Y18.F3      net (fanout=1)        0.785   color_and000012
+    SLICE_X22Y18.X       Tilo                  0.660   color_and0000120
+                                                       color_and0000120
+    SLICE_X22Y22.F1      net (fanout=1)        0.323   color_and0000120
+    SLICE_X22Y22.X       Tilo                  0.660   color_and0000
+                                                       color_and0000242
+    SLICE_X27Y30.BY      net (fanout=7)        0.934   color_and0000
+    SLICE_X27Y30.CLK     Tsrck                 0.953   color<3>
+                                                       color_3
+    -------------------------------------------------  ---------------------------
+    Total                                     12.173ns (4.986ns logic, 7.187ns route)
+                                                       (41.0% logic, 59.0% route)
 
 --------------------------------------------------------------------------------
 
 Hold Paths: TS_CLK_25MHz = PERIOD TIMEGRP "vga/clk_div/clk_out1" 25 MHz HIGH 50%;
 --------------------------------------------------------------------------------
 
-Paths for end point vga/clk_div/clk_out (SLICE_X15Y17.BY), 1 path
+Paths for end point vga/CurrentX_2 (SLICE_X29Y23.BY), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.899ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               vga/clk_div/clk_out (FF)
-  Destination:          vga/clk_div/clk_out (FF)
+Slack (hold path):      0.897ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               vga/CurHPos_2 (FF)
+  Destination:          vga/CurrentX_2 (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.899ns (Levels of Logic = 0)
-  Clock Path Skew:      0.000ns
-  Source Clock:         clk_50MHz_BUFGP rising at 40.000ns
-  Destination Clock:    clk_50MHz_BUFGP rising at 40.000ns
-  Clock Uncertainty:    0.000ns
-
-  Minimum Data Path: vga/clk_div/clk_out to vga/clk_div/clk_out
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X15Y17.YQ      Tcko                  0.409   vga/clk_div/clk_out1
-                                                       vga/clk_div/clk_out
-    SLICE_X15Y17.BY      net (fanout=2)        0.373   vga/clk_div/clk_out1
-    SLICE_X15Y17.CLK     Tckdi       (-Th)    -0.117   vga/clk_div/clk_out1
-                                                       vga/clk_div/clk_out
-    -------------------------------------------------  ---------------------------
-    Total                                      0.899ns (0.526ns logic, 0.373ns route)
-                                                       (58.5% logic, 41.5% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point turn (SLICE_X12Y43.BY), 1 path
---------------------------------------------------------------------------------
-Slack (hold path):      0.961ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               turn (FF)
-  Destination:          turn (FF)
-  Requirement:          0.000ns
-  Data Path Delay:      0.961ns (Levels of Logic = 0)
-  Clock Path Skew:      0.000ns
+  Data Path Delay:      0.895ns (Levels of Logic = 0)
+  Clock Path Skew:      -0.002ns (0.014 - 0.016)
   Source Clock:         vga/clk_div/clk_out rising at 40.000ns
   Destination Clock:    vga/clk_div/clk_out rising at 40.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path: turn to turn
+  Minimum Data Path: vga/CurHPos_2 to vga/CurrentX_2
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X12Y43.YQ      Tcko                  0.454   turn1
-                                                       turn
-    SLICE_X12Y43.BY      net (fanout=2)        0.375   turn1
-    SLICE_X12Y43.CLK     Tckdi       (-Th)    -0.132   turn1
-                                                       turn
+    SLICE_X27Y23.XQ      Tcko                  0.411   vga/CurHPos<2>
+                                                       vga/CurHPos_2
+    SLICE_X29Y23.BY      net (fanout=3)        0.367   vga/CurHPos<2>
+    SLICE_X29Y23.CLK     Tckdi       (-Th)    -0.117   vga/CurrentX<3>
+                                                       vga/CurrentX_2
     -------------------------------------------------  ---------------------------
-    Total                                      0.961ns (0.586ns logic, 0.375ns route)
-                                                       (61.0% logic, 39.0% route)
+    Total                                      0.895ns (0.528ns logic, 0.367ns route)
+                                                       (59.0% logic, 41.0% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point map/mColor_7 (SLICE_X19Y22.F4), 1 path
+Paths for end point vga/CurrentX_1 (SLICE_X28Y23.BX), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      1.147ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               map/HallwayTopLeft/mColor_2 (FF)
-  Destination:          map/mColor_7 (FF)
+Slack (hold path):      0.932ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               vga/CurHPos_1 (FF)
+  Destination:          vga/CurrentX_1 (FF)
   Requirement:          0.000ns
-  Data Path Delay:      1.147ns (Levels of Logic = 1)
-  Clock Path Skew:      0.000ns
-  Source Clock:         vga/clk_div/clk_out falling at 60.000ns
-  Destination Clock:    vga/clk_div/clk_out falling at 60.000ns
+  Data Path Delay:      0.930ns (Levels of Logic = 0)
+  Clock Path Skew:      -0.002ns (0.014 - 0.016)
+  Source Clock:         vga/clk_div/clk_out rising at 40.000ns
+  Destination Clock:    vga/clk_div/clk_out rising at 40.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path: map/HallwayTopLeft/mColor_2 to map/mColor_7
+  Minimum Data Path: vga/CurHPos_1 to vga/CurrentX_1
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X19Y20.YQ      Tcko                  0.409   map/HallwayTopLeft/mColor<2>
-                                                       map/HallwayTopLeft/mColor_2
-    SLICE_X19Y22.F4      net (fanout=2)        0.290   map/HallwayTopLeft/mColor<2>
-    SLICE_X19Y22.CLK     Tckf        (-Th)    -0.448   map/mColor<7>
-                                                       map/mColor_mux0000<7>1
-                                                       map/mColor_7
+    SLICE_X27Y22.YQ      Tcko                  0.409   vga/CurHPos<0>
+                                                       vga/CurHPos_1
+    SLICE_X28Y23.BX      net (fanout=3)        0.405   vga/CurHPos<1>
+    SLICE_X28Y23.CLK     Tckdi       (-Th)    -0.116   vga/CurrentX<1>
+                                                       vga/CurrentX_1
     -------------------------------------------------  ---------------------------
-    Total                                      1.147ns (0.857ns logic, 0.290ns route)
-                                                       (74.7% logic, 25.3% route)
+    Total                                      0.930ns (0.525ns logic, 0.405ns route)
+                                                       (56.5% logic, 43.5% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point vga/CurrentX_0 (SLICE_X28Y23.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.947ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               vga/CurHPos_0 (FF)
+  Destination:          vga/CurrentX_0 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.945ns (Levels of Logic = 0)
+  Clock Path Skew:      -0.002ns (0.014 - 0.016)
+  Source Clock:         vga/clk_div/clk_out rising at 40.000ns
+  Destination Clock:    vga/clk_div/clk_out rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: vga/CurHPos_0 to vga/CurrentX_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X27Y22.XQ      Tcko                  0.411   vga/CurHPos<0>
+                                                       vga/CurHPos_0
+    SLICE_X28Y23.BY      net (fanout=3)        0.402   vga/CurHPos<0>
+    SLICE_X28Y23.CLK     Tckdi       (-Th)    -0.132   vga/CurrentX<1>
+                                                       vga/CurrentX_0
+    -------------------------------------------------  ---------------------------
+    Total                                      0.945ns (0.543ns logic, 0.402ns route)
+                                                       (57.5% logic, 42.5% route)
 
 --------------------------------------------------------------------------------
 
@@ -552,27 +659,27 @@ Slack: 38.562ns (period - (min low pulse limit / (low pulse / period)))
   Period: 40.000ns
   Low pulse: 20.000ns
   Low pulse limit: 0.719ns (Tcl)
-  Physical resource: color<0>/CLK
-  Logical resource: color_0/CK
-  Location pin: SLICE_X20Y22.CLK
+  Physical resource: vga/HS/CLK
+  Logical resource: vga/HS/CK
+  Location pin: SLICE_X30Y20.CLK
   Clock network: vga/clk_div/clk_out
 --------------------------------------------------------------------------------
 Slack: 38.562ns (period - (min high pulse limit / (high pulse / period)))
   Period: 40.000ns
   High pulse: 20.000ns
   High pulse limit: 0.719ns (Tch)
-  Physical resource: color<0>/CLK
-  Logical resource: color_0/CK
-  Location pin: SLICE_X20Y22.CLK
+  Physical resource: vga/HS/CLK
+  Logical resource: vga/HS/CK
+  Location pin: SLICE_X30Y20.CLK
   Clock network: vga/clk_div/clk_out
 --------------------------------------------------------------------------------
 Slack: 38.562ns (period - (min low pulse limit / (low pulse / period)))
   Period: 40.000ns
   Low pulse: 20.000ns
   Low pulse limit: 0.719ns (Tcl)
-  Physical resource: color<3>/CLK
-  Logical resource: color_3/CK
-  Location pin: SLICE_X20Y25.CLK
+  Physical resource: vga/VS/CLK
+  Logical resource: vga/VS/CK
+  Location pin: SLICE_X30Y11.CLK
   Clock network: vga/clk_div/clk_out
 --------------------------------------------------------------------------------
 
@@ -589,7 +696,7 @@ Clock to Setup on destination clock clk_50MHz
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk_50MHz      |    1.291|         |         |         |
+clk_50MHz      |    1.511|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -598,23 +705,23 @@ Timing summary:
 
 Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
 
-Constraints cover 1796 paths, 0 nets, and 470 connections
+Constraints cover 19054 paths, 0 nets, and 1391 connections
 
 Design statistics:
-   Minimum period:  12.864ns{1}   (Maximum frequency:  77.736MHz)
+   Minimum period:  26.010ns{1}   (Maximum frequency:  38.447MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Sat Apr 25 04:16:10 2015 
+Analysis completed Sun Apr 26 20:22:28 2015 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 154 MB
+Peak Memory Usage: 162 MB
 
 
 

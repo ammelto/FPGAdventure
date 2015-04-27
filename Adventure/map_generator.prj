@@ -1,0 +1,4 @@
+verilog work "StartCastle.v"
+verilog work "HallwayTop.v"
+verilog work "HallwayRight.v"
+verilog work "map.v"

@@ -25,6 +25,6 @@ NET "BUTTON<0>" LOC = "G12";
 
 #Created by Constraints Editor (xc3s100e-cp132-4) - 2013/04/26
 NET "CLK_50MHz" TNM_NET = CLK_50MHz;
-TIMESPEC TS_CLK_50MHz = PERIOD "CLK_50MHz" 50 MHz HIGH 50%;
+TIMESPEC TS_CLK_50MHz = PERIOD "CLK_50MHz" 25 MHz HIGH 50%;
 NET "vga/clk_div/clk_out1" TNM_NET = vga/clk_div/clk_out1;
 TIMESPEC TS_CLK_25MHz = PERIOD "vga/clk_div/clk_out1" 25 MHz HIGH 50%;

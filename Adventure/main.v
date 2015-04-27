@@ -41,8 +41,24 @@ module main(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, SWITCH, BUTTON);
 	reg [9:0] playerPosX = 320;
 	reg [8:0] playerPosY = 240;
 	reg [7:0] playerColor;
-	reg [2:0] mapX = 0;
-	reg [2:0] mapY = 0;
+	reg [3:0] mapX = 3;
+	reg [3:0] mapY = 5;
+	//
+	reg dragStep = 0;
+	reg [1:0]dragState = 0;
+	reg [9:0] grundleX = 160;
+	reg [8:0] grundleY = 240;
+	reg [9:0] rhindleX = 320;
+	reg [8:0] rhindleY = 240;
+	reg [9:0] yorgleX = 320;
+	reg [8:0] yorgleY = 240;
+	//Starting Map Locations
+	reg [3:0] grundleMapX = 4;
+	reg [3:0] grundleMapY = 7;
+	reg [3:0] rhindleMapX = 2;
+	reg [3:0] rhindleMapY = 6;
+	reg [3:0] yorgleMapX = 1;
+	reg [3:0] yorgleMapY = 1;
 	//
 	reg [7:0] color = 0;
 	reg collision = 0;
@@ -103,7 +119,7 @@ module main(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, SWITCH, BUTTON);
 				playerPosX <= playerPosX + 1;
 			end
 		end
-		else if (BUTTON[1] && (playerPosY < 470)) begin
+		if (BUTTON[1] && (playerPosY < 470)) begin
 			if(collision) begin
 				playerPosY <= playerPosY - 7;
 				end
@@ -111,7 +127,7 @@ module main(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, SWITCH, BUTTON);
 				playerPosY <= playerPosY + 1;
 			end
 		end
-		else if(BUTTON[2] && ~(playerPosY <= 10)) begin
+		if(BUTTON[2] && ~(playerPosY <= 10)) begin
 			if(collision) begin
 				playerPosY <= playerPosY + 7;
 				end
@@ -119,7 +135,7 @@ module main(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, SWITCH, BUTTON);
 				playerPosY <= playerPosY - 1;
 			end
 		end
-		else if(BUTTON[3] && ~(playerPosX <= 16)) begin
+		if(BUTTON[3] && ~(playerPosX <= 16)) begin
 			if(collision) begin
 				playerPosX <= playerPosX + 7;
 				end
@@ -148,28 +164,203 @@ module main(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, SWITCH, BUTTON);
 		end
 		
 		//Color for specific maps
-		if(mapX == 0 && mapY == 0)
+		if(mapX == 3 && mapY == 5)
 			playerColor[7:0] <= 8'b11111100;
-		else if(mapX == 0 && mapY == 1)
-			playerColor[7:0] <= 8'b00000011;
+		else if(((mapX < 5) || ~(mapX < 2)) && mapY == 6) //hallway
+			playerColor[7:0] <= 8'b00011100;
+		else if(mapX == 4 && mapY == 7) //black key room
+			playerColor[7:0] <= 8'b11110000;
+		
 			
 		//Reset
 		if(SWITCH[3]) begin
 			playerPosX <= 320;
 			playerPosY <= 240;
-			mapX <= 0;
-			mapY <= 0;
+			mapX <= 3;
+			mapY <= 5;
 		end
+		
+		dragStep <= ~dragStep;
 	end
 	
+	//Dragon
+	always @(posedge dragStep) begin
+		if(mapX == grundleMapX && mapY == grundleMapY) begin
+			if(playerPosX > grundleX)
+				grundleX <= grundleX + 1;
+			if(playerPosY > grundleY)
+				grundleY <= grundleY + 1;
+			if(playerPosX < grundleX)
+				grundleX <= grundleX - 1;
+			if(playerPosY < grundleY)
+				grundleY <= grundleY - 1;	
+			if(playerPosX == grundleX && playerPosY == grundleY)
+				dragState <= 1;
+			else 
+				dragState <= 0;
+		end
+		else begin
+			grundleX <= 160;
+			grundleY <= 240;
+		end
+		//(playerPosX <= grundleX+2 && playerPosX >= grundleX-2) && (playerPosY <= grundleY+2 && playerPosY >= grundleY-2)
+	end
+	
+	//Render loop
 	//Draws the dynamic objects within the world
 	//It overwrites the mapData with current dynamic object
 	always @(posedge clk_vga) begin
 		if(HBlank || VBlank) begin
 			color <= 0;
 		end else begin
+			//Draws Grundle advancing
+			if((mapX == grundleMapX && mapY == grundleMapY && dragState == 0) 
+				&& (
+						(((CurrentX >= grundleX -12) && (CurrentX < grundleX -8)) && (
+								((CurrentY >= grundleY) && (CurrentY <= grundleY+8)) || 
+								((CurrentY >= grundleY + 32) && (CurrentY <= grundleY + 52)) ||
+								((CurrentY >= grundleY + 60) && (CurrentY <= grundleY + 68))
+							))
+						||	(((CurrentX >= grundleX -8) && (CurrentX < grundleX -4)) && (
+								((CurrentY >= grundleY) && (CurrentY <= grundleY+8)) ||
+								((CurrentY >= grundleY +28) && (CurrentY <= grundleY +52)) ||
+								((CurrentY >= grundleY +64) && (CurrentY <= grundleY +68))
+							))
+						|| (((CurrentX >= grundleX -4) && (CurrentX < grundleX)) && (
+								((CurrentY >= grundleY) && (CurrentY <= grundleY+8)) ||
+								((CurrentY >= grundleY +24) && (CurrentY <= grundleY +36)) ||
+								((CurrentY >= grundleY +48) && (CurrentY <= grundleY +56)) ||
+								((CurrentY >= grundleY +64) && (CurrentY <= grundleY +72))
+							))
+						|| (((CurrentX >= grundleX) && (CurrentX < grundleX +4)) && (
+								((CurrentY >= grundleY) && (CurrentY <= grundleY+8)) ||
+								((CurrentY >= grundleY +20) && (CurrentY <= grundleY +32)) ||
+								((CurrentY >= grundleY +48) && (CurrentY <= grundleY +56)) ||
+								((CurrentY >= grundleY +68) && (CurrentY <= grundleY +72))
+							))
+						|| (((CurrentX >= grundleX +4) && (CurrentX < grundleX +8)) && (
+								((CurrentY >= grundleY -4) && (CurrentY <= grundleY)) ||
+								((CurrentY >= grundleY +4) && (CurrentY <= grundleY +12)) ||
+								((CurrentY >= grundleY +20) && (CurrentY <= grundleY +32)) ||
+								((CurrentY >= grundleY +48) && (CurrentY <= grundleY +64)) ||
+								((CurrentY >= grundleY +68) && (CurrentY <= grundleY +72))
+							))
+						|| (((CurrentX >= grundleX +8) && (CurrentX < grundleX +12)) && (
+								((CurrentY >= grundleY -8) && (CurrentY <= grundleY)) ||
+								((CurrentY >= grundleY +4) && (CurrentY <= grundleY +32)) ||
+								((CurrentY >= grundleY +44) && (CurrentY <= grundleY +56)) ||
+								((CurrentY >= grundleY +60) && (CurrentY <= grundleY +64)) ||
+								((CurrentY >= grundleY +68) && (CurrentY <= grundleY +72))
+							))
+						|| (((CurrentX >= grundleX +12) && (CurrentX < grundleX +16)) && (
+								((CurrentY >= grundleY -8) && (CurrentY <= grundleY +12)) ||
+								((CurrentY >= grundleY +20) && (CurrentY <= grundleY +52)) ||
+								((CurrentY >= grundleY +60) && (CurrentY <= grundleY +72))
+							))
+						|| (((CurrentX >= grundleX +16) && (CurrentX < grundleX +20)) && (
+								((CurrentY >= grundleY -4) && (CurrentY <= grundleY +4)) ||
+								((CurrentY >= grundleY +24) && (CurrentY <= grundleY +52))
+							))
+						)
+			) begin
+						color[7:0] <= 8'b00011100;
+			end
+			//Draws grundle eating
+			else if((mapX == grundleMapX && mapY == grundleMapY && dragState == 1) 
+				&& (
+						(((CurrentX >= grundleX -12) && (CurrentX < grundleX -8)) && (
+								((CurrentY >= grundleY -16) && (CurrentY <= grundleY -12)) || 
+								((CurrentY >= grundleY +20) && (CurrentY <= grundleY +24)) ||
+								((CurrentY >= grundleY +60) && (CurrentY <= grundleY +72))
+							))
+						||	(((CurrentX >= grundleX -8) && (CurrentX < grundleX -4)) && (
+								((CurrentY >= grundleY -12) && (CurrentY <= grundleY -8)) ||
+								((CurrentY >= grundleY +16) && (CurrentY <= grundleY +20)) ||
+								((CurrentY >= grundleY +32) && (CurrentY <= grundleY +48)) ||
+								((CurrentY >= grundleY +60) && (CurrentY <= grundleY +64)) ||
+								((CurrentY >= grundleY +68) && (CurrentY <= grundleY +72))
+							))
+						|| (((CurrentX >= grundleX -4) && (CurrentX < grundleX)) && (
+								((CurrentY >= grundleY -8) && (CurrentY <= grundleY -4)) ||
+								((CurrentY >= grundleY +12) && (CurrentY <= grundleY +16)) ||
+								((CurrentY >= grundleY +28) && (CurrentY <= grundleY +52)) ||
+								((CurrentY >= grundleY +60) && (CurrentY <= grundleY +64)) ||
+								((CurrentY >= grundleY +68) && (CurrentY <= grundleY +72))
+							))
+						|| (((CurrentX >= grundleX) && (CurrentX < grundleX +4)) && (
+								((CurrentY >= grundleY -4) && (CurrentY <= grundleY)) ||
+								((CurrentY >= grundleY +8) && (CurrentY <= grundleY +12)) ||
+								((CurrentY >= grundleY +24) && (CurrentY <= grundleY +56)) ||
+								((CurrentY >= grundleY +60) && (CurrentY <= grundleY +64))
+							))
+						|| (((CurrentX >= grundleX +4) && (CurrentX < grundleX +8)) && (
+								((CurrentY >= grundleY -4) && (CurrentY <= grundleY +12)) ||
+								((CurrentY >= grundleY +20) && (CurrentY <= grundleY +64))
+							))
+						|| (((CurrentX >= grundleX +8) && (CurrentX < grundleX +12)) && (
+								((CurrentY >= grundleY -8) && (CurrentY <= grundleY)) ||
+								((CurrentY >= grundleY +4) && (CurrentY <= grundleY +56))
+							))
+						|| (((CurrentX >= grundleX +12) && (CurrentX < grundleX +16)) && (
+								((CurrentY >= grundleY -8) && (CurrentY <= grundleY +12)) ||
+								((CurrentY >= grundleY +20) && (CurrentY <= grundleY +52))
+							))
+						|| (((CurrentX >= grundleX +16) && (CurrentX < grundleX +20)) && (
+								((CurrentY >= grundleY -4) && (CurrentY <= grundleY +4)) ||
+								((CurrentY >= grundleY +28) && (CurrentY <= grundleY +48))
+						))
+					)
+			) begin
+						color[7:0] <= 8'b00011100;
+			end
+			//Grundle Slain
+			else if((mapX == grundleMapX && mapY == grundleMapY && dragState == 2) 
+				&& (
+						(((CurrentX >= grundleX -12) && (CurrentX < grundleX -8)) && (
+								((CurrentY >= grundleY +16) && (CurrentY <= grundleY +36))
+							))
+						||	(((CurrentX >= grundleX -8) && (CurrentX < grundleX -4)) && (
+								((CurrentY >= grundleY +12) && (CurrentY <= grundleY +20)) ||
+								((CurrentY >= grundleY +24) && (CurrentY <= grundleY +44)) ||
+								((CurrentY >= grundleY +48) && (CurrentY <= grundleY +60))
+							))
+						|| (((CurrentX >= grundleX -4) && (CurrentX < grundleX)) && (
+								((CurrentY >= grundleY +12) && (CurrentY <= grundleY +16)) ||
+								((CurrentY >= grundleY +24) && (CurrentY <= grundleY +52)) ||
+								((CurrentY >= grundleY +56) && (CurrentY <= grundleY +60))
+							))
+						|| (((CurrentX >= grundleX) && (CurrentX < grundleX +4)) && (
+								((CurrentY >= grundleY +8) && (CurrentY <= grundleY +16)) ||
+								((CurrentY >= grundleY +24) && (CurrentY <= grundleY +44)) ||
+								((CurrentY >= grundleY +56) && (CurrentY <= grundleY +60))
+							))
+						|| (((CurrentX >= grundleX +4) && (CurrentX < grundleX +8)) && (
+								((CurrentY >= grundleY -8) && (CurrentY <= grundleY +20)) ||
+								((CurrentY >= grundleY +24) && (CurrentY <= grundleY +44)) ||
+								((CurrentY >= grundleY +48) && (CurrentY <= grundleY +52)) ||
+								((CurrentY >= grundleY +56) && (CurrentY <= grundleY +60))
+							))
+						|| (((CurrentX >= grundleX +8) && (CurrentX < grundleX +12)) && (
+								((CurrentY >= grundleY -8) && (CurrentY <= grundleY +8)) ||
+								((CurrentY >= grundleY +12) && (CurrentY <= grundleY +20)) ||
+								((CurrentY >= grundleY +24) && (CurrentY <= grundleY +40)) ||
+								((CurrentY >= grundleY +48) && (CurrentY <= grundleY +52)) ||
+								((CurrentY >= grundleY +56) && (CurrentY <= grundleY +60)) 
+							))
+						|| (((CurrentX >= grundleX +12) && (CurrentX < grundleX +16)) && (
+								((CurrentY >= grundleY +4) && (CurrentY <= grundleY +20)) ||
+								((CurrentY >= grundleY +28) && (CurrentY <= grundleY +40)) ||
+								((CurrentY >= grundleY +48) && (CurrentY <= grundleY +60)) 
+							))
+						|| (((CurrentX >= grundleX +16) && (CurrentX < grundleX +20)) && (
+								((CurrentY >= grundleY +8) && (CurrentY <= grundleY +16))
+						))
+					)
+			) begin
+						color[7:0] <= 8'b00011100;
+			end
 			//Draws the player
-			if((CurrentY < playerPosY+9) && (CurrentX < playerPosX+9) && ~(CurrentY < playerPosY-9) && ~(CurrentX < playerPosX-9))begin
+			else if((CurrentY < playerPosY+9) && (CurrentX < playerPosX+9) && ~(CurrentY < playerPosY-9) && ~(CurrentX < playerPosX-9))begin
 					color[7:0] <= playerColor[7:0];
 					//Collision is determined by color rather than hitboxes for memory purposes
 					if(mapData[7:0] == playerColor[7:0])

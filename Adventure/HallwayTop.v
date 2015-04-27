@@ -34,13 +34,10 @@ module HallwayTop(clk_vga, CurrentX, CurrentY, mapData, wall);
 		if(~(CurrentY < 440)) begin
 			mColor[7:0] <= wall;
 		end
-		else if(CurrentX < 40) begin
-			mColor[7:0] <= wall;
-		end
 		else if(((CurrentY < 40) && (CurrentX < 260)) || ((CurrentY < 40) && ~(CurrentX < 380))) begin
 			mColor[7:0] <= wall;
 		end else
-			mColor[7:0] <= 8'b11111110;	
+			mColor[7:0] <= 8'b10110110;
 			
 	end
 	

@@ -25,8 +25,8 @@ module map_generator(clk_vga, reset, CurrentX, CurrentY, HBlank, VBlank, playerC
 	input [9:0]CurrentX;
 	input [8:0]CurrentY;
 	input [7:0]playerColor;
-	input [2:0]mapX;
-	input [2:0]mapY;
+	input [3:0]mapX;
+	input [3:0]mapY;
 	input clk_vga;
 	input reset;
 	input HBlank;
@@ -36,8 +36,12 @@ module map_generator(clk_vga, reset, CurrentX, CurrentY, HBlank, VBlank, playerC
 	
 	reg [7:0]mColor;
 	
+	//Rooms
 	wire [7:0]startCastle;
 	wire [7:0]hallwayTop;
+	wire [7:0] hallwayRight;
+	wire [7:0] blackKeyRoom;
+	wire [7:0] hallwayLeft;
 	
 	//Each map layout is split into its own module for readability
 	StartCastle StartCastle(
@@ -48,13 +52,39 @@ module map_generator(clk_vga, reset, CurrentX, CurrentY, HBlank, VBlank, playerC
 		.wall(playerColor)
 	);
 	
-	HallwayTop HallwayTopLeft(
+	HallwayTop HallwayTop(
 		.clk_vga(clk_vga),
 		.CurrentX(CurrentX),
 		.CurrentY(CurrentY),
 		.mapData(hallwayTop),
 		.wall(playerColor)
 	);
+	
+	HallwayRight HallwayRight(
+		.clk_vga(clk_vga),
+		.CurrentX(CurrentX),
+		.CurrentY(CurrentY),
+		.mapData(hallwayRight),
+		.wall(playerColor)
+	);
+	
+	BlackKeyRoom BlackKeyRoom(
+		.clk_vga(clk_vga),
+		.CurrentX(CurrentX),
+		.CurrentY(CurrentY),
+		.mapData(blackKeyRoom),
+		.wall(playerColor)
+	);
+	
+	HallwayLeft HallwayLeft(
+		.clk_vga(clk_vga),
+		.CurrentX(CurrentX),
+		.CurrentY(CurrentY),
+		.mapData(hallwayLeft),
+		.wall(playerColor)
+	);
+	
+	
 	
 	//Draws the map based on the current mapX and mapY
 	//The idea is to have only one output from the map generator module
@@ -79,12 +109,26 @@ module map_generator(clk_vga, reset, CurrentX, CurrentY, HBlank, VBlank, playerC
 			end
 			*/
 				
-			if(mapX == 0 && mapY == 0) begin
+			//Starting castle
+			if(mapX == 3 && mapY == 5) begin
 				mColor[7:0] <= startCastle[7:0];
 			end 
-			else if(mapX == 0 && mapY == 1) begin
+			//Central hallway
+			else if(mapX == 3 && mapY == 6) begin
 				mColor[7:0] <= hallwayTop[7:0];
 			end 
+			//Right hallway
+			else if(mapX == 4 && mapY == 6) begin
+				mColor[7:0] <= hallwayRight[7:0];
+			end
+			//Black key room
+			else if(mapX == 4 && mapY == 7) begin
+				mColor[7:0] <= blackKeyRoom[7:0];
+			end
+			//Left hallway
+			else if(mapX == 2 && mapY == 6) begin
+				mColor[7:0] <= hallwayLeft;
+			end
 			else begin
 				mColor[7:0] <= 8'b00000000;
 			end

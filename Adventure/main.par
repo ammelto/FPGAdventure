@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-DILANCUAN-PC::  Sat Apr 25 04:16:02 2015
+DILANCUAN-PC::  Sun Apr 26 20:22:18 2015
 
 par -w -intstyle ise -ol high -t 1 main_map.ncd main.ncd main.pcf 
 
@@ -36,8 +36,8 @@ Design Summary Report:
    Number of External Bidir IOBs                  0
 
 
-   Number of BUFGMUXs                        3 out of 24     12%
-   Number of Slices                        161 out of 960    16%
+   Number of BUFGMUXs                        4 out of 24     16%
+   Number of Slices                        562 out of 960    58%
       Number of SLICEMs                      0 out of 480     0%
 
 
@@ -59,37 +59,38 @@ Total REAL time at the beginning of Placer: 1 secs
 Total CPU  time at the beginning of Placer: 1 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:eece5c35) REAL time: 1 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:bace45d3) REAL time: 1 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:eece5c35) REAL time: 1 secs 
+Phase 2.7  Design Feasibility Check (Checksum:bace45d3) REAL time: 1 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:eece5c35) REAL time: 1 secs 
+Phase 3.31  Local Placement Optimization (Checksum:bace45d3) REAL time: 1 secs 
 
 Phase 4.2  Initial Clock and IO Placement
 
-Phase 4.2  Initial Clock and IO Placement (Checksum:fb50ac50) REAL time: 1 secs 
+Phase 4.2  Initial Clock and IO Placement (Checksum:8efc0bd) REAL time: 1 secs 
 
 Phase 5.30  Global Clock Region Assignment
-Phase 5.30  Global Clock Region Assignment (Checksum:fb50ac50) REAL time: 1 secs 
+Phase 5.30  Global Clock Region Assignment (Checksum:8efc0bd) REAL time: 1 secs 
 
 Phase 6.36  Local Placement Optimization
-Phase 6.36  Local Placement Optimization (Checksum:fb50ac50) REAL time: 1 secs 
+Phase 6.36  Local Placement Optimization (Checksum:8efc0bd) REAL time: 1 secs 
 
 Phase 7.8  Global Placement
-.....................
-..
-Phase 7.8  Global Placement (Checksum:2e140775) REAL time: 3 secs 
+............................................
+.....
+................
+Phase 7.8  Global Placement (Checksum:efd189ac) REAL time: 3 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:2e140775) REAL time: 3 secs 
+Phase 8.5  Local Placement Optimization (Checksum:efd189ac) REAL time: 3 secs 
 
 Phase 9.18  Placement Optimization
-Phase 9.18  Placement Optimization (Checksum:622d5c21) REAL time: 3 secs 
+Phase 9.18  Placement Optimization (Checksum:7fe1b560) REAL time: 3 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:622d5c21) REAL time: 3 secs 
+Phase 10.5  Local Placement Optimization (Checksum:7fe1b560) REAL time: 3 secs 
 
 Total REAL time to Placer completion: 3 secs 
 Total CPU  time to Placer completion: 3 secs 
@@ -100,26 +101,26 @@ Writing design to file main.ncd
 Starting Router
 
 
-Phase  1  : 972 unrouted;      REAL time: 4 secs 
+Phase  1  : 3523 unrouted;      REAL time: 4 secs 
 
-Phase  2  : 882 unrouted;      REAL time: 4 secs 
+Phase  2  : 3337 unrouted;      REAL time: 4 secs 
 
-Phase  3  : 159 unrouted;      REAL time: 4 secs 
+Phase  3  : 782 unrouted;      REAL time: 4 secs 
 
-Phase  4  : 159 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
+Phase  4  : 782 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
+Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
 
 Updating file: main.ncd with current fully routed design.
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
 
-Total REAL time to Router completion: 4 secs 
-Total CPU time to Router completion: 4 secs 
+Total REAL time to Router completion: 5 secs 
+Total CPU time to Router completion: 5 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -137,11 +138,13 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-| vga/clk_div/clk_out |  BUFGMUX_X1Y0| No   |   49 |  0.029     |  0.064      |
+|     clk_50MHz_BUFGP | BUFGMUX_X2Y11| No   |    1 |  0.000     |  0.057      |
 +---------------------+--------------+------+------+------------+-------------+
-|     clk_50MHz_BUFGP | BUFGMUX_X2Y11| No   |    1 |  0.000     |  0.052      |
+| vga/clk_div/clk_out |  BUFGMUX_X2Y1| No   |   77 |  0.021     |  0.054      |
 +---------------------+--------------+------+------+------------+-------------+
-|                turn | BUFGMUX_X1Y10| No   |   17 |  0.022     |  0.059      |
+|                turn | BUFGMUX_X1Y10| No   |   20 |  0.027     |  0.062      |
++---------------------+--------------+------+------+------------+-------------+
+|            dragStep |  BUFGMUX_X1Y0| No   |   11 |  0.012     |  0.057      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -163,11 +166,11 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_CLK_25MHz = PERIOD TIMEGRP "vga/clk_di | SETUP       |    13.568ns|    12.864ns|       0|           0
-  v/clk_out1" 25 MHz HIGH 50%               | HOLD        |     0.899ns|            |       0|           0
+  TS_CLK_25MHz = PERIOD TIMEGRP "vga/clk_di | SETUP       |     6.995ns|    26.010ns|       0|           0
+  v/clk_out1" 25 MHz HIGH 50%               | HOLD        |     0.897ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  TS_CLK_50MHz = PERIOD TIMEGRP "CLK_50MHz" | MINPERIOD   |    18.612ns|     1.388ns|       0|           0
-   50 MHz HIGH 50%                          |             |            |            |        |            
+  TS_CLK_50MHz = PERIOD TIMEGRP "CLK_50MHz" | MINPERIOD   |    38.612ns|     1.388ns|       0|           0
+   25 MHz HIGH 50%                          |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -181,9 +184,9 @@ All signals are completely routed.
 WARNING:Par:283 - There are 3 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
 Total REAL time to PAR completion: 5 secs 
-Total CPU time to PAR completion: 4 secs 
+Total CPU time to PAR completion: 5 secs 
 
-Peak Memory Usage:  268 MB
+Peak Memory Usage:  276 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.

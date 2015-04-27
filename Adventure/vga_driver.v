@@ -156,5 +156,5 @@ module vga_driver(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, HBLANK, VBLANK, C
 	assign RED = (Blank) ? 3'b000 : COLOR[7:5];
 	assign GREEN = (Blank) ? 3'b000 : COLOR[4:2];
 	assign BLUE = (Blank) ? 2'b00 : COLOR[1:0];
-
+	
 endmodule

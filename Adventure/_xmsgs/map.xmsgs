@@ -20,6 +20,11 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 <msg type="info" file="LIT" num="244" delta="old" >All of the single ended outputs in this design are using slew rate limited output drivers. The delay on speed critical single ended outputs can be dramatically reduced by designating them as fast outputs.
 </msg>
 
+<msg type="warning" file="Pack" num="249" delta="old" >The following adjacent carry multiplexers occupy different slice components.  The resulting carry chain will have suboptimal timing.
+	<arg fmt="%s" index="1">Mcompar_grundleY_cmp_lt0000_cy&lt;8&gt;</arg>
+	<arg fmt="%s" index="2">Mcount_grundleY_cy&lt;0&gt;</arg>
+</msg>
+
 <msg type="warning" file="PhysDesignRules" num="367" delta="old" >The signal &lt;<arg fmt="%s" index="1">SWITCH&lt;0&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 

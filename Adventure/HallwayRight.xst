@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Dilancuan/Documents/FPGAdventure/FPGAdventure/Adventure/xst"
+elaborate
+-ifn HallwayRight.prj
+-ifmt mixed
