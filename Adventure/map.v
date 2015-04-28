@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module map_generator(clk_vga, reset, CurrentX, CurrentY, HBlank, VBlank, playerColor, mapData,
+module map_generator(clk_vga, reset, CurrentX, CurrentY, playerColor, mapData,
 							mapX, mapY
     );
 
@@ -29,26 +29,23 @@ module map_generator(clk_vga, reset, CurrentX, CurrentY, HBlank, VBlank, playerC
 	input [3:0]mapY;
 	input clk_vga;
 	input reset;
-	input HBlank;
-	input VBlank;
 	
 	output [7:0]mapData;
 	
 	reg [7:0]mColor;
 	
 	//Rooms
-	wire [7:0]startCastle;
-	wire [7:0]hallwayTop;
+	wire [7:0] startCastle;
+	wire [7:0] hallwayTop;
 	wire [7:0] hallwayRight;
 	wire [7:0] blackKeyRoom;
 	wire [7:0] hallwayLeft;
-	wire [7:0] castle;
 	wire [7:0] centerMaze;
 	wire [7:0] eCenterMaze;
 	wire [7:0] nCenterMaze;
 	wire [7:0] sCenterMaze;
 	wire [7:0] swMaze;
-	wire [7:0] blackInner;
+	wire [7:0] castle;
 	
 	//Each map layout is split into its own module for readability
 	StartCastle StartCastle(
@@ -139,40 +136,14 @@ module map_generator(clk_vga, reset, CurrentX, CurrentY, HBlank, VBlank, playerC
 		.wall(playerColor)
 	);
 	
-	BlackInner BlackInner(
-		.clk_vga(clk_vga),
-		.CurrentX(CurrentX),
-		.CurrentY(CurrentY),
-		.mapData(blackInner),
-		.wall(playerColor)
-	);
-	
-	
 	//Draws the map based on the current mapX and mapY
 	//The idea is to have only one output from the map generator module
 	//And do all the heavy lifting in the top module
 	//The map generator acts as a datapath for the static objects in the game
 	always @(posedge clk_vga) begin
-		if(HBlank || VBlank) begin
-			mColor <= 0;
-		end
-		else begin
-			
-			//VGA test pattern for debugging purposes
-			/*
-			if(CurrentY < 160) begin
-				mColor[7:5] <= 3'b111;
-			end
-			else if(CurrentY < 320) begin
-				mColor[4:2] <= 3'b111;
-			end
-			else begin
-				mColor[1:0] <= 2'b11;
-			end
-			*/
 				
 			//Starting castle
-			if(mapX == 3 && mapY == 4)
+			if(mapX == 3 && mapY == 5)
 				mColor[7:0] <= startCastle[7:0]; 
 			//Central hallway
 			else if(mapX == 3 && mapY == 6)
@@ -201,25 +172,18 @@ module map_generator(clk_vga, reset, CurrentX, CurrentY, HBlank, VBlank, playerC
 			//North Center Maze
 			else if(mapX == 1 && mapY == 4)
 				mColor[7:0] <= nCenterMaze;
-			//Castle Yellow
-			else if(mapX == 3 && mapY == 5)
-				mColor[7:0] <= castle;
 			//Black Castle
 			else if(mapX == 1 && mapY == 3)
 				mColor[7:0] <= castle;
 			//Challice Room
-			else if(mapX == 1 && mapY == 1)
-				mColor[7:0] <= startCastle;
-			//Black Castle Inner
 			else if(mapX == 1 && mapY == 2)
-				mColor[7:0] <= blackInner;
+				mColor[7:0] <= startCastle;
 			//No map found
 			else begin
 				mColor[7:0] <= 8'b00000000;
 			end
 			
 		end
-	end
 	
 	assign mapData[7:0] = mColor[7:0];
 	

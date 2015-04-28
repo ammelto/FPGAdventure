@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module vga_driver(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, HBLANK, VBLANK, CURX, CURY, COLOR, CLK_DATA, RESET);
+module vga_driver(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, CURX, CURY, COLOR, CLK_DATA, RESET);
 
 	input clk_50MHz;
 	output vs_vga;
@@ -26,8 +26,6 @@ module vga_driver(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, HBLANK, VBLANK, C
 	output [2:0] RED;
 	output [2:0] GREEN;
 	output [1:0] BLUE;
-	output HBLANK;
-	output VBLANK;
 	
 	reg VS = 0;
 	reg HS = 0;
@@ -147,8 +145,6 @@ module vga_driver(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, HBLANK, VBLANK, C
 			
 	assign CURX = CurrentX;
 	assign CURY = CurrentY;
-	assign VBLANK = VBlank_reg;
-	assign HBLANK = HBlank_reg;
 	assign hs_vga = HS;
 	assign vs_vga = VS;
 	
