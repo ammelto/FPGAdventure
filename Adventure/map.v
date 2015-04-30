@@ -63,7 +63,7 @@ module map_generator(clk_vga, reset, CurrentX, CurrentY, playerColor, mapData,
 		.mapData(hallwayTop),
 		.wall(playerColor)
 	);
-	
+	/*
 	HallwayRight HallwayRight(
 		.clk_vga(clk_vga),
 		.CurrentX(CurrentX),
@@ -79,7 +79,7 @@ module map_generator(clk_vga, reset, CurrentX, CurrentY, playerColor, mapData,
 		.mapData(blackKeyRoom),
 		.wall(playerColor)
 	);
-	
+	*/
 	HallwayLeft HallwayLeft(
 		.clk_vga(clk_vga),
 		.CurrentX(CurrentX),

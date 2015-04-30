@@ -43,31 +43,20 @@ module main(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, SWITCH, BUTTON);
 	reg [3:0] mapX = 3;
 	reg [3:0] mapY = 5;
 	//
-	reg [1:0]dragState = 0;
+	reg [1:0] dragState = 0;
 	reg [9:0] grundleX = 160;
 	reg [8:0] grundleY = 240;
 	//Starting Map Locations
 	reg [3:0] grundleMapX = 1;
 	reg [3:0] grundleMapY = 2;
 	//
-	reg blackUsed = 0;
-	reg [1:0] itemGet = 0;
-	reg [9:0] blackKeyX = 128;
-	reg [8:0] blackKeyY = 220;
-	reg [9:0] swordX = 128;
-	reg [8:0] swordY = 340;
-	reg [9:0] challiceX = 128;
-	reg [8:0] challiceY = 340;
-	reg [3:0] blackKeyMapY = 7;
-	reg [3:0] blackKeyMapX = 4;
-	reg [3:0] swordMapX = 3;
-	reg [3:0] swordMapY = 5;
-	reg [3:0] challiceMapX = 1;
-	reg [3:0] challiceMapY = 2;
+	reg itemGet = 0;
+	reg [9:0] swordX = 560;
+	reg [8:0] swordY = 240;
+	parameter swordMapX = 1;
+	parameter swordMapY = 4;
 	
 	//
-	parameter gateX = 304;
-	parameter gateY = 280;
 	reg [7:0] color = 0;
 	reg collision = 0;
 	
@@ -101,6 +90,7 @@ module main(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, SWITCH, BUTTON);
 		if(counter < 16'HFFFF)
 			counter <= counter +1;
 		else begin
+			//challiceColor[7:0] <= challiceColor[7:0] ^ CurrentX[7:0];
 			counter <= 0;
 			turn = ~turn;
 		end
@@ -206,11 +196,15 @@ module main(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, SWITCH, BUTTON);
 		end
 		
 		//Color for specific maps
-		if(mapX == 3 && mapY <= 5)
-			playerColor[7:0] <= 8'b11111100;
+		if(mapX == 3 && mapY <= 5) begin
+			if(itemGet == 1 && dragState == 2)begin
+				playerColor[3:0] <= playerPosX[3:0];
+				playerColor[7:4] <= playerPosY[7:4];
+			end
+			else
+				playerColor[7:0] <= 8'b11111100;		
+		end
 		//black key room
-		else if(mapX == 4 && mapY == 7) 
-			playerColor[7:0] <= 8'b11110000;
 		else if(mapX == 1) begin
 			//Challice Room
 			if(mapY == 2)
@@ -231,9 +225,6 @@ module main(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, SWITCH, BUTTON);
 		//Middle hallway
 		else if(mapX == 3 && mapY == 6)
 			playerColor[7:0] <= 8'b00011100;
-		//Right hallway
-		else if(mapX == 4 && mapY == 6)
-			playerColor[7:0] <= 8'b10010000;
 		//Color not found
 		else
 			playerColor[7:0] <= 8'b11111111;
@@ -260,50 +251,52 @@ module main(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, SWITCH, BUTTON);
 			if(playerPosY < grundleY)
 				grundleY <= grundleY - 1;	
 			if(playerPosX == grundleX && playerPosY == grundleY)
-				if(itemGet == 2'b10)
+				if(itemGet == 1)
 					dragState <= 2;
 				else
 					dragState <= 1;
 			else 
 				dragState <= 0;
 		end
-		else begin
-			grundleX <= 160;
-			grundleY <= 240;
+		
+		if(SWITCH[3]) begin
+			dragState <= 0;
 		end
-		//(playerPosX <= grundleX+2 && playerPosX >= grundleX-2) && (playerPosY <= grundleY+2 && playerPosY >= grundleY-2)
+		
 	end
 	
 	//Items
 	always @(posedge turn)begin
-	
-		if(mapX == blackKeyMapX && mapY == blackKeyMapY && ~blackUsed) begin
-			if((playerPosX > blackKeyX && playerPosX < blackKeyX +32) &&  (playerPosY > blackKeyY -4 && playerPosY < blackKeyY +8))begin
-				itemGet <= 2'b01;
-			end
-		end
 		
 		if(mapX == swordMapX && mapY == swordMapY) begin
-			if((playerPosX > swordX && playerPosX < swordX +32) &&  (playerPosY > swordY -4 && playerPosY < swordY +8))begin
-				itemGet <= 2'b10;
+			if((playerPosX > swordX -28 && playerPosX < swordX -24) &&  (playerPosY > swordY -4 && playerPosY < swordY +8))begin
+				itemGet <= 1;
 			end
 		end
 		
-		if(itemGet == 2'b10) begin
+		if(itemGet == 1) begin
 			swordX <= playerPosX +32;
 			swordY <= playerPosY;
 		end
-
-		if(itemGet == 2'b01) begin
-			blackKeyX <= playerPosX + 15;
-			blackKeyY <= playerPosY;
-			if(mapX == 1 && mapY == 3)begin
-				if(playerPosX < 352 && playerPosX > 288 && playerPosY < 360) begin
-				blackUsed = 1;
-				end
+		
+		if(SWITCH[3]) begin
+			itemGet <= 0;
+			swordX <= 560;
+			swordY <= 240;
+		end
+		
+		/*
+		if(mapX == challiceMapX && mapY == challiceMapY) begin
+			if((playerPosX > challiceX -28 && playerPosX < challiceX +4) &&  (playerPosY > challiceY && playerPosY < challiceY +36))begin
+				itemGet <= 2'b11;
 			end
 		end
 		
+		if(itemGet == 2'b11) begin
+			challiceX <= playerPosX +32;
+			challiceY <= playerPosY;
+		end
+		*/
 	
 	end
 
@@ -455,45 +448,45 @@ module main(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, SWITCH, BUTTON);
 						))
 					)
 			) begin
-						color[7:0] <= 8'b00011100;
+				color[7:0] <= 8'b00011100;
 			end
-			//gate
-			else if((mapX == 1 && mapY == 3 && ~blackUsed)
-				&&(
-					(((CurrentX >= gateX) && (CurrentX < gateX +5)) && (
-								((CurrentY >= gateY) && (CurrentY <= gateY +80))
+			//Challice
+			else if((dragState == 2) && (
+					(((CurrentX >= swordX) && (CurrentX < swordX +4)) && (
+								((CurrentY >= swordY) && (CurrentY <= swordY +12))
 					))
-				|| (((CurrentX >= gateX +10) && (CurrentX < gateX +15)) && (
-								((CurrentY >= gateY) && (CurrentY <= gateY +80))
+				|| (((CurrentX >= swordX +4) && (CurrentX < swordX +8)) && (
+								((CurrentY >= swordY +8) && (CurrentY <= swordY +20)) ||
+								((CurrentY >= swordY +32) && (CurrentY <= swordY +36))
 					))
-				|| (((CurrentX >= gateX +20) && (CurrentX < gateX +25)) && (
-								((CurrentY >= gateY) && (CurrentY <= gateY +80))
+				|| (((CurrentX >= swordX +8) && (CurrentX < swordX +12)) && (
+								((CurrentY >= swordY +12) && (CurrentY <= swordY +24)) ||
+								((CurrentY >= swordY +32) && (CurrentY <= swordY +36))
 					))
-				|| (((CurrentX >= gateX +30) && (CurrentX < gateX +35)) && (
-								((CurrentY >= gateY) && (CurrentY <= gateY +80))
+				|| (((CurrentX >= swordX +12) && (CurrentX < swordX +16)) && (
+								((CurrentY >= swordY +12) && (CurrentY <= swordY +36))
 					))
-				)
+				|| (((CurrentX >= swordX +16) && (CurrentX < swordX +20)) && (
+								((CurrentY >= swordY +12) && (CurrentY <= swordY +36))
+					))
+				|| (((CurrentX >= swordX +20) && (CurrentX < swordX +24)) && (
+								((CurrentY >= swordY +12) && (CurrentY <= swordY +24)) ||
+								((CurrentY >= swordY +32) && (CurrentY <= swordY +36))
+					))
+				|| (((CurrentX >= swordX +24) && (CurrentX < swordX +28)) && (
+								((CurrentY >= swordY +8) && (CurrentY <= swordY +20)) ||
+								((CurrentY >= swordY +32) && (CurrentY <= swordY +36))
+					))
+				|| (((CurrentX >= swordX +28) && (CurrentX < swordX +32)) && (
+								((CurrentY >= swordY) && (CurrentY <= swordY +12))
+					))
+					
+				) 
 			) begin
-				color[7:0] <= 8'b00000000;
+				color[3:0] <= playerPosX[3:0];
+				color[7:4] <= playerPosY[7:4];
 			end
-			//Black key
-			else if((((mapX == blackKeyMapX && mapY == blackKeyMapY) || itemGet == 2'b01) && blackUsed == 0) && (
-					(((CurrentY >= blackKeyY -4) && (CurrentY < blackKeyY)) && (
-								((CurrentX >= blackKeyX +22) && (CurrentX <= blackKeyX +32))
-							))
-					|| (((CurrentY >= blackKeyY) && (CurrentY < blackKeyY +4)) && (
-								((CurrentX >= blackKeyX ) && (CurrentX <= blackKeyX +24)) ||
-								((CurrentX >= blackKeyX +28) && (CurrentX <= blackKeyX +32))
-							))
-					|| (((CurrentY >= blackKeyY +4) && (CurrentY < blackKeyY +8)) && (
-								((CurrentX >= blackKeyX ) && (CurrentX <= blackKeyX +4)) ||
-								((CurrentX >= blackKeyX +8) && (CurrentX <= blackKeyX +12)) ||
-								((CurrentX >= blackKeyX +22) && (CurrentX <= blackKeyX +32))
-						))
-				)
-			)
-				color[7:0] <= 8'b00000000;
-			else if(((mapX == swordMapX && mapY == swordMapY) || (itemGet == 2'b10)) && (
+			else if((((mapX == swordMapX && mapY == swordMapY) || (itemGet == 1)) && ~(dragState == 2)) && (
 					(((CurrentY >= swordY -8) && (CurrentY < swordY -4)) && (
 								((CurrentX >= swordX -20) && (CurrentX <= swordX -16))
 					))
@@ -516,19 +509,11 @@ module main(clk_50MHz, vs_vga, hs_vga, RED, GREEN, BLUE, SWITCH, BUTTON);
 			else if((CurrentY < playerPosY+9) && (CurrentX < playerPosX+9) && ~(CurrentY < playerPosY-9) && ~(CurrentX < playerPosX-9))begin
 					color[7:0] <= playerColor[7:0];
 					//Collision is determined by color rather than hitboxes for memory purposes
-					if(mapData[7:0] == playerColor[7:0]) begin
+					if(mapData[7:0] == playerColor[7:0] && ~(mapX == 1 && mapY == 3 && CurrentX > 256 && CurrentX < 384)) begin
 						collision <= 1;
 					end
-					else
+					else begin
 						collision <= 0;
-					
-					if(mapX == 1 && mapY == 3) begin
-						if(playerPosX > 288 && playerPosY < 352)begin
-							if(blackUsed)
-								collision <= 0;
-							else
-								collision <= 1;
-						end
 					end
 			end
 			//Finally draws the map

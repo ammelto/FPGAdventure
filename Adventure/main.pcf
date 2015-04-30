@@ -1,10 +1,13 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue Apr 28 16:34:08 2015
+// Written by: Map P.20131013 on Wed Apr 29 19:00:28 2015
 //! **************************************************************************
 
 SCHEMATIC START;
 COMP "clk_50MHz" LOCATE = SITE "B8" LEVEL 1;
 COMP "SWITCH<0>" LOCATE = SITE "P11" LEVEL 1;
+COMP "SWITCH<1>" LOCATE = SITE "L3" LEVEL 1;
+COMP "SWITCH<2>" LOCATE = SITE "K3" LEVEL 1;
+COMP "SWITCH<3>" LOCATE = SITE "N3" LEVEL 1;
 COMP "RED<0>" LOCATE = SITE "C14" LEVEL 1;
 COMP "RED<1>" LOCATE = SITE "D13" LEVEL 1;
 COMP "RED<2>" LOCATE = SITE "F13" LEVEL 1;
@@ -21,7 +24,8 @@ COMP "BLUE<0>" LOCATE = SITE "H13" LEVEL 1;
 COMP "BLUE<1>" LOCATE = SITE "J13" LEVEL 1;
 NET "clk_50MHz_BUFGP/IBUFG" BEL "clk_50MHz_BUFGP/BUFG.GCLKMUX"
         USELOCALCONNECT;
-TIMEGRP vga/clk_div/clk_out1 = BEL "color_5" BEL "color_6" BEL "color_7" BEL
+TIMEGRP vga/clk_div/clk_out1 = BEL "color_7" BEL "color_6" BEL "color_5" BEL
+        "color_2" BEL "color_4" BEL "color_3" BEL "color_1" BEL "color_0" BEL
         "turn" BEL "collision" BEL "counter_0" BEL "counter_1" BEL "counter_2"
         BEL "counter_3" BEL "counter_4" BEL "counter_5" BEL "counter_6" BEL
         "counter_7" BEL "counter_8" BEL "counter_9" BEL "counter_10" BEL
@@ -51,14 +55,10 @@ TIMEGRP vga/clk_div/clk_out1 = BEL "color_5" BEL "color_6" BEL "color_7" BEL
         "map/CenterMaze/mColor_6" BEL "map/Castle/mColor_0" BEL
         "map/Castle/mColor_3" BEL "map/Castle/mColor_6" BEL
         "map/HallwayLeft/mColor_0" BEL "map/HallwayLeft/mColor_3" BEL
-        "map/HallwayLeft/mColor_6" BEL "map/BlackKeyRoom/mColor_0" BEL
-        "map/BlackKeyRoom/mColor_3" BEL "map/BlackKeyRoom/mColor_6" BEL
-        "map/HallwayRight/mColor_0" BEL "map/HallwayRight/mColor_3" BEL
-        "map/HallwayRight/mColor_6" BEL "map/HallwayTop/mColor_0" BEL
+        "map/HallwayLeft/mColor_6" BEL "map/HallwayTop/mColor_0" BEL
         "map/HallwayTop/mColor_3" BEL "map/HallwayTop/mColor_6" BEL
         "map/StartCastle/mColor_0" BEL "map/StartCastle/mColor_3" BEL
-        "map/StartCastle/mColor_6" BEL "color_0" BEL "color_1" BEL "color_2"
-        BEL "color_3" BEL "color_4" BEL "map/SWMaze/mColor_1" BEL
+        "map/StartCastle/mColor_6" BEL "map/SWMaze/mColor_1" BEL
         "map/SWMaze/mColor_2" BEL "map/SWMaze/mColor_4" BEL
         "map/SWMaze/mColor_5" BEL "map/SWMaze/mColor_7" BEL
         "map/SCenterMaze/mColor_1" BEL "map/SCenterMaze/mColor_2" BEL
@@ -76,11 +76,6 @@ TIMEGRP vga/clk_div/clk_out1 = BEL "color_5" BEL "color_6" BEL "color_7" BEL
         "map/Castle/mColor_7" BEL "map/HallwayLeft/mColor_1" BEL
         "map/HallwayLeft/mColor_2" BEL "map/HallwayLeft/mColor_4" BEL
         "map/HallwayLeft/mColor_5" BEL "map/HallwayLeft/mColor_7" BEL
-        "map/BlackKeyRoom/mColor_1" BEL "map/BlackKeyRoom/mColor_2" BEL
-        "map/BlackKeyRoom/mColor_4" BEL "map/BlackKeyRoom/mColor_5" BEL
-        "map/BlackKeyRoom/mColor_7" BEL "map/HallwayRight/mColor_1" BEL
-        "map/HallwayRight/mColor_2" BEL "map/HallwayRight/mColor_4" BEL
-        "map/HallwayRight/mColor_5" BEL "map/HallwayRight/mColor_7" BEL
         "map/HallwayTop/mColor_1" BEL "map/HallwayTop/mColor_2" BEL
         "map/HallwayTop/mColor_4" BEL "map/HallwayTop/mColor_5" BEL
         "map/HallwayTop/mColor_7" BEL "map/StartCastle/mColor_1" BEL
@@ -88,10 +83,7 @@ TIMEGRP vga/clk_div/clk_out1 = BEL "color_5" BEL "color_6" BEL "color_7" BEL
         "map/StartCastle/mColor_5" BEL "map/StartCastle/mColor_7" BEL
         "map/mColor_7" BEL "map/mColor_6" BEL "map/mColor_5" BEL
         "map/mColor_4" BEL "map/mColor_3" BEL "map/mColor_2" BEL
-        "map/mColor_1" BEL "map/mColor_0" BEL "vga/CurrentX_5_1" BEL
-        "vga/CurrentX_3_1" BEL "vga/CurrentX_2_1" BEL "vga/CurrentY_7_1" BEL
-        "vga/CurrentY_4_1" BEL "vga/CurrentY_5_1" BEL "vga/CurrentY_0_1" BEL
-        "vga/CurrentY_1_1" BEL "vga/CurrentY_2_1" BEL
+        "map/mColor_1" BEL "map/mColor_0" BEL
         "vga/clk_div/clk_out_BUFG.GCLKMUX" BEL "vga/clk_div/clk_out_BUFG";
 TIMEGRP CLK_50MHz = BEL "vga/clk_div/clk_out" BEL
         "clk_50MHz_BUFGP/BUFG.GCLKMUX" BEL "clk_50MHz_BUFGP/BUFG";
